@@ -1,0 +1,531 @@
+HTML
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitalidad Activa - 4 Semanas de Ejercicio</title>
+    <style>
+        /* Paleta de colores basada en psicología del color (Azul = Confianza, Verde = Salud) */
+        :root {
+            --primary-blue: #1e3a8a;
+            --light-blue: #eff6ff;
+            --accent-green: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #ffffff;
+            --bg-gray: #f3f4f6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
+            padding-bottom: 80px; /* Espacio para el menú inferior */
+        }
+
+        /* Encabezado */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        /* Sección de Motivación Diaria */
+        .motivation-box {
+            background-color: #fef08a; /* Amarillo suave para captar atención positiva */
+            border-left: 5px solid #eab308;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Contenedor Principal de Secciones */
+        .container {
+            padding: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-section {
+            display: none; /* Ocultas por defecto */
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Selector de Semanas - Adaptado para adultos (Grande y claro) */
+        .semana-selector-container {
+            margin: 15px 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .semana-selector-container label {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+        }
+
+        .semana-select {
+            padding: 10px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            border: 2px solid var(--primary-blue);
+            background-color: #ffffff;
+            color: var(--primary-blue);
+            font-weight: bold;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        /* Bloques de cada semana */
+        .semana-block {
+            display: none;
+        }
+
+        .semana-block.active {
+            display: block;
+        }
+
+        /* Tarjetas de Videos de Ejercicios */
+        .video-card {
+            background-color: var(--text-light);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .video-placeholder {
+            background-color: #000;
+            width: 100%;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-info h3 {
+            margin-bottom: 5px;
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+        }
+
+        .video-info p {
+            color: #4b5563;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .btn-complete {
+            background-color: var(--accent-green);
+            color: var(--text-light);
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .btn-complete:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        /* Panel de Progreso y Medallas */
+        .progress-header {
+            background-color: var(--light-blue);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* Barra de progreso visual */
+        .progress-bar-container {
+            background-color: #e5e7eb;
+            border-radius: 10px;
+            height: 20px;
+            width: 100%;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background-color: var(--accent-green);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .medals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .medal-item {
+            background-color: var(--text-light);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            opacity: 0.25; /* Opaco si no está ganada */
+            transition: all 0.5s ease;
+            border: 2px solid transparent;
+        }
+
+        .medal-item.unlocked {
+            opacity: 1;
+            transform: scale(1.02);
+            border: 2px solid #eab308;
+            background-color: #fefce8;
+        }
+
+        .medal-icon {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Menú de Navegación Inferior (Íconos grandes, sin textos complejos) */
+        nav.nav-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 75px;
+            background-color: var(--text-light);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            border-top: 1px solid #e5e7eb;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .nav-item.active {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .nav-item-icon {
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vitalidad Activa</h1>
+    </header>
+
+    <div class="motivation-box" id="motivation-box">
+        "¡Cada paso cuenta! Treinta minutos de caminata hoy son años de salud mañana."
+    </div>
+
+    <div class="container">
+        
+        <section id="sec-inicio" class="page-section active">
+            
+            <div class="semana-selector-container">
+                <label for="semana-select">Elegir Semana:</label>
+                <select id="semana-select" class="semana-select" onchange="cambiarSemana(this.value)">
+                    <option value="1">Semana 1 (Sesiones 1-3)</option>
+                    <option value="2">Semana 2 (Sesiones 4-6)</option>
+                    <option value="3">Semana 3 (Sesiones 7-9)</option>
+                    <option value="4">Semana 4 (Sesiones 10-12)</option>
+                </select>
+            </div>
+
+            <div id="block-semana-1" class="semana-block active">
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 1: Movilidad Articular ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 1: Movilidad Completa</h3>
+                        <p>Ejercicios muy suaves para calentar las articulaciones y despertar el cuerpo.</p>
+                        <button class="btn-complete" onclick="completarSesion(1)" id="btn-s1">Marcar como Completado</button>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 2: Equilibrio Activo ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 2: Equilibrio y Estabilidad</h3>
+                        <p>Rutina enfocada en dar seguridad y fuerza al caminar en el día a día.</p>
+                        <button class="btn-complete" onclick="completarSesion(2)" id="btn-s2">Marcar como Completado</button>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 3: Estiramientos Relajantes ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 3: Estiramientos Suaves</h3>
+                        <p>Ideal para relajar los músculos tensos y descansar plenamente al terminar la semana.</p>
+                        <button class="btn-complete" onclick="completarSesion(3)" id="btn-s3">Marcar como Completado</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="block-semana-2" class="semana-block">
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 4: Fuerza de Piernas ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 4: Fuerza en las Piernas</h3>
+                        <p>Ejercicios básicos para fortalecer los muslos y facilitar el levantarse de sillas.</p>
+                        <button class="btn-complete" onclick="completarSesion(4)" id="btn-s4">Marcar como Completado</button>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 5: Cardio Suave ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 5: Ritmo Cardíaco Saludable</h3>
+                        <p>Marcha en el propio sitio combinada con movimientos de brazos para mejorar la resistencia.</p>
+                        <button class="btn-complete" onclick="completarSesion(5)" id="btn-s5">Marcar como Completado</button>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 6: Postura Corporal ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 6: Espalda Sana y Postura</h3>
+                        <p>Ejercicios sentados o de pie para abrir el pecho y aliviar tensiones en la espalda alta.</p>
+                        <button class="btn-complete" onclick="completarSesion(6)" id="btn-s6">Marcar como Completado</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="block-semana-3" class="semana-block">
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 7: Fuerza con Pesas Ligeras ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 7: Fuerza con Pesas Ligeras</h3>
+                        <p>Rutina usando botellas de agua o mancuernas muy pequeñas para fortalecer los brazos.</p>
+                        <button class="btn-complete" onclick="completarSesion(7)" id="btn-s7">Marcar como Completado</button>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 8: Coordinación ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 8: Coordinación y Agilidad</h3>
+                        <p>Ejercicios divertidos y sencillos para mantener la mente y el cuerpo conectados.</p>
+                        <button class="btn-complete" onclick="completarSesion(8)" id="btn-s8">Marcar como Completado</button>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 9: Flexibilidad de Cadera ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 9: Movilidad de Cadera y Tronco</h3>
+                        <p>Movimientos controlados para soltar la rigidez de la parte inferior del cuerpo.</p>
+                        <button class="btn-complete" onclick="completarSesion(9)" id="btn-s9">Marcar como Completado</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="block-semana-4" class="semana-block">
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 10: Resistencia Total ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 10: Circuito de Resistencia</h3>
+                        <p>Combinación de los ejercicios aprendidos para mantener un cuerpo activo y fuerte.</p>
+                        <button class="btn-complete" onclick="completarSesion(10)" id="btn-s10">Marcar como Completado</button>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 11: Fuerza Funcional ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 11: Fuerza para la Vida Diaria</h3>
+                        <p>Movimientos que imitan cargar compras o agacharse de forma segura y firme.</p>
+                        <button class="btn-complete" onclick="completarSesion(11)" id="btn-s11">Marcar como Completado</button>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder"><span>[ VIDEO - SESIÓN 12: Gran Cierre Activo ]</span></div>
+                    <div class="video-info">
+                        <h3>Sesión 12: Celebración y Estiramiento Final</h3>
+                        <p>Última sesión del programa para festejar el gran esfuerzo realizado por tu salud.</p>
+                        <button class="btn-complete" onclick="completarSesion(12)" id="btn-s12">Marcar como Completado</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="sec-progreso" class="page-section">
+            <div class="progress-header">
+                <h2>Tu Progreso Total</h2>
+                <p style="font-size: 1.3rem; margin-top: 10px;">
+                    Has completado <span id="contador-progreso" style="color: var(--accent-green); font-weight: bold; font-size: 1.6rem;">0</span> de <span style="font-weight: bold;">12</span> sesiones.
+                </p>
+                <div class="progress-bar-container">
+                    <div id="bar-fill" class="progress-bar-fill"></div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--primary-blue); margin: 15px 0 10px 5px;">Tus Logros y Medallas Virtuales</h3>
+            
+            <div class="medals-grid">
+                <div class="medal-item" id="medal-1">
+                    <span class="medal-icon">🏁</span>
+                    <strong>Primer Paso</strong>
+                    <p style="font-size: 0.85rem; color: #6b7280;">Completa la primera sesión</p>
+                </div>
+                <div class="medal-item" id="medal-2">
+                    <span class="medal-icon">🔋</span>
+                    <strong>Gran Comienzo</strong>
+                    <p style="font-size: 0.85rem; color: #6b7280;">Completa la Semana 1 (3 sesiones)</p>
+                </div>
+                <div class="medal-item" id="medal-3">
+                    <span class="medal-icon">⚡</span>
+                    <strong>Mitad del Camino</strong>
+                    <p style="font-size: 0.85rem; color: #6b7280;">Completa 6 sesiones</p>
+                </div>
+                <div class="medal-item" id="medal-4">
+                    <span class="medal-icon">🏆</span>
+                    <strong>¡Campeón Total!</strong>
+                    <p style="font-size: 0.85rem; color: #6b7280;">Completa las 12 sesiones (4 semanas)</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <nav class="nav-bottom">
+        <button class="nav-item active" onclick="cambiarSeccion('sec-inicio', this)">
+            <span class="nav-item-icon">🏠</span>
+            Inicio / Rutinas
+        </button>
+        <button class="nav-item" onclick="cambiarSeccion('sec-progreso', this)">
+            <span class="nav-item-icon">📅</span>
+            Mi Progreso
+        </button>
+    </nav>
+
+    <script>
+        // Objeto para registrar el estado de las 12 sesiones
+        let progreso = {
+            totalCompletadas: 0,
+            completadosArray: new Array(13).fill(false) // De la 1 a la 12
+        };
+
+        const frases = [
+            "¡Cada paso cuenta! Treinta minutos de caminata hoy son años de salud mañana.",
+            "No importa qué tan lento vayas, lo importante es que no te detengas.",
+            "Hacer ejercicio es el mayor acto de amor propio para tu cuerpo y salud.",
+            "¡Tu esfuerzo de hoy es la fuerza e independencia de tu mañana!",
+            "¡Un día más activo es un paso más hacia una vida llena de energía!"
+        ];
+
+        window.onload = function() {
+            const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+            document.getElementById('motivation-box').innerText = `"${fraseAleatoria}"`;
+        };
+
+        // Cambiar entre pestañas principales (Inicio vs Progreso)
+        function cambiarSeccion(sectionId, boton) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-item').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(sectionId).classList.add('active');
+            boton.classList.add('active');
+        }
+
+        // Lógica del menú desplegable para cambiar entre semanas 1, 2, 3 y 4
+        function cambiarSemana(numSemana) {
+            document.querySelectorAll('.semana-block').forEach(block => {
+                block.classList.remove('active');
+            });
+            document.getElementById(`block-semana-${numSemana}`).classList.add('active');
+        }
+
+        // Función cuando el usuario hace clic en "Marcar como Completado"
+        function completarSesion(idSesion) {
+            if (!progreso.completadosArray[idSesion]) {
+                progreso.completadosArray[idSesion] = true;
+                progreso.totalCompletadas++;
+                
+                // Cambiar el botón visualmente
+                const boton = document.getElementById(`btn-s${idSesion}`);
+                if(boton) {
+                    boton.innerText = "✓ Sesión Completada";
+                    boton.disabled = true;
+                }
+
+                // Actualizar contadores y barra en la sección de progreso
+                document.getElementById('contador-progreso').innerText = progreso.totalCompletadas;
+                
+                // Calcular porcentaje de barra de progreso (Max 12 sesiones = 100%)
+                let porcentaje = (progreso.totalCompletadas / 12) * 100;
+                document.getElementById('bar-fill').style.width = porcentaje + "%";
+
+                verificarMedallas();
+            }
+        }
+
+        // Sistema de Gamificación con las 4 metas de las 4 semanas
+        function verificarMedallas() {
+            // Medalla 1: Primera sesión
+            if (progreso.totalCompletadas >= 1) {
+                document.getElementById('medal-1').classList.add('unlocked');
+            }
+            // Medalla 2: Semana 1 completa (3 sesiones)
+            if (progreso.totalCompletadas >= 3) {
+                document.getElementById('medal-2').classList.add('unlocked');
+            }
+            // Medalla 3: Mitad de todo el curso (6 sesiones)
+            if (progreso.totalCompletadas >= 6) {
+                document.getElementById('medal-3').classList.add('unlocked');
+            }
+            // Medalla 4: Campeón total (Las 12 sesiones completadas)
+            if (progreso.totalCompletadas >= 12) {
+                document.getElementById('medal-4').classList.add('unlocked');
+            }
+        }
+    </script>
+</body>
+</html>
