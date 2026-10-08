@@ -69,6 +69,11 @@
             font-size: 1.15rem;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             color: #5c3e00;
+            transition: transform 0.3s ease;
+        }
+
+        .motivation-box:hover {
+            transform: scale(1.02);
         }
 
         .container {
@@ -85,7 +90,7 @@
             display: block;
         }
 
-        /* Selector de Semanas */
+        /* Selector de Semanas Interactivo */
         .semana-selector-container {
             margin: 20px 5px;
             display: flex;
@@ -110,6 +115,14 @@
             cursor: pointer;
             flex: 1;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .semana-select:hover, .semana-select:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(77, 173, 247, 0.3);
+            border-color: var(--primary-orange);
+            outline: none;
         }
 
         .semana-block {
@@ -120,7 +133,7 @@
             display: block;
         }
 
-        /* Tarjetas de Ejercicios */
+        /* Tarjetas de Ejercicios Interactivas */
         .video-card {
             background-color: var(--text-light);
             border-radius: 16px;
@@ -128,6 +141,12 @@
             margin-bottom: 25px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .video-placeholder {
@@ -146,6 +165,11 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0, 0, 0, 0.55);
+            transition: background 0.3s ease;
+        }
+
+        .video-card:hover .video-placeholder::before {
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .video-placeholder span {
@@ -156,6 +180,11 @@
             font-size: 1.2rem;
             z-index: 1;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover .video-placeholder span {
+            transform: scale(1.05);
         }
 
         .video-info {
@@ -175,6 +204,7 @@
             line-height: 1.4;
         }
 
+        /* Botón de completar ALTAMENTE INTERACTIVO Y ANIMADO */
         .btn-complete {
             background: linear-gradient(135deg, #2ecc71, #27ae60);
             color: var(--text-light);
@@ -186,13 +216,29 @@
             font-weight: bold;
             width: 100%;
             box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
-            transition: all 0.2s ease;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-complete:hover:not(:disabled) {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 8px 18px rgba(46, 204, 113, 0.45);
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        .btn-complete:active:not(:disabled) {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 2px 6px rgba(46, 204, 113, 0.4);
         }
 
         .btn-complete:disabled {
             background: #9ca3af !important;
             box-shadow: none;
             cursor: not-allowed;
+            transform: none !important;
         }
 
         /* Panel de Progreso */
@@ -231,7 +277,7 @@
             transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Cuadrícula de Medallas */
+        /* Cuadrícula de Medallas Interactivas */
         .medals-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -255,15 +301,26 @@
             border: 2px solid var(--gold-medal);
             background: linear-gradient(135deg, #ffffff, #fffdf0);
             box-shadow: 0 6px 15px rgba(241, 196, 15, 0.2);
+            cursor: pointer;
+        }
+
+        .medal-item.unlocked:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 10px 22px rgba(241, 196, 15, 0.35);
         }
 
         .medal-icon {
             font-size: 3.2rem;
             display: block;
             margin-bottom: 8px;
+            transition: transform 0.3s ease;
         }
 
-        /* Navegación Inferior */
+        .medal-item.unlocked:hover .medal-icon {
+            transform: scale(1.2) rotate(8deg);
+        }
+
+        /* Navegación Inferior Interactiva y Animada */
         nav.nav-bottom {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -288,7 +345,17 @@
             color: #94a3b8;
             cursor: pointer;
             font-size: 1.05rem;
-            transition: color 0.2s;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item-icon {
+            font-size: 2rem;
+            margin-bottom: 2px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nav-item:hover .nav-item-icon {
+            transform: translateY(-4px) scale(1.2);
         }
 
         .nav-item.active {
@@ -296,9 +363,13 @@
             font-weight: bold;
         }
 
-        .nav-item-icon {
-            font-size: 2rem;
-            margin-bottom: 2px;
+        .nav-item.active .nav-item-icon {
+            transform: translateY(-2px) scale(1.15);
+            filter: drop-shadow(0 2px 8px rgba(255, 107, 107, 0.5));
+        }
+
+        .nav-item:active {
+            transform: scale(0.95);
         }
 
         /* Modal de Registro */
@@ -340,10 +411,12 @@
             border: 2px solid #cbd5e1;
             border-radius: 10px;
             font-size: 1.1rem;
+            transition: all 0.3s ease;
         }
 
         .form-input:focus {
             border-color: var(--electric-blue);
+            box-shadow: 0 0 0 4px rgba(77, 173, 247, 0.2);
             outline: none;
         }
 
@@ -358,6 +431,86 @@
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 16px rgba(255, 107, 107, 0.45);
+        }
+
+        .btn-submit:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        /* MODAL DE CELEBRACIÓN DE MEDALLA (12 SESIONES) */
+        .celebration-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.88);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            overflow: hidden;
+        }
+
+        .celebration-content {
+            background: linear-gradient(135deg, #ffffff, #fffdf0);
+            border: 4px solid var(--gold-medal);
+            padding: 35px 25px;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(241, 196, 15, 0.6);
+            animation: zoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .animated-medal {
+            font-size: 6rem;
+            display: inline-block;
+            animation: pulseMedal 1.5s infinite ease-in-out;
+            margin-bottom: 10px;
+        }
+
+        .celebration-content h2 {
+            color: #d35400;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .celebration-content p {
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulseMedal {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(10deg); filter: drop-shadow(0 0 15px rgba(241, 196, 15, 0.8)); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 18px;
+            top: -20px;
+            opacity: 0.9;
+            animation: fallConfetti 3s linear infinite;
+        }
+
+        @keyframes fallConfetti {
+            0% { top: -20px; transform: rotate(0deg); }
+            100% { top: 100vh; transform: rotate(720deg); }
         }
     </style>
 </head>
@@ -371,6 +524,16 @@
             <input type="text" id="username" class="form-input" placeholder="Tu Nombre (Ej: Papá o Mamá)" required>
             <input type="password" id="password" class="form-input" placeholder="Elige una contraseña corta" required>
             <button class="btn-submit" onclick="registrarUsuario()">Comenzar mi Entrenamiento</button>
+        </div>
+    </div>
+
+    <!-- MODAL DE CELEBRACIÓN DE LA MEDALLA DE 12 SESIONES -->
+    <div class="celebration-overlay" id="celebration-modal">
+        <div class="celebration-content">
+            <span class="animated-medal">🏆</span>
+            <h2>¡FELICIDADES CAMPEÓN(A)!</h2>
+            <p id="celebration-msg">¡Has completado el programa completo de 12 sesiones! Te has ganado la <strong>Medalla de Oro de Vitalidad Activa</strong>.</p>
+            <button class="btn-submit" style="background: linear-gradient(135deg, #2ecc71, #27ae60);" onclick="cerrarCelebracion()">¡Recibir mi Medalla!</button>
         </div>
     </div>
 
@@ -665,6 +828,21 @@
             document.getElementById(`block-semana-${numSemana}`).classList.add('active');
         }
 
+        function lanzarConfeti() {
+            const overlay = document.getElementById('celebration-modal');
+            const colores = ['#ff6b6b', '#4dadf7', '#2ecc71', '#f1c40f', '#e67e22', '#9b59b6'];
+            
+            for (let i = 0; i < 40; i++) {
+                const confeti = document.createElement('div');
+                confeti.className = 'confetti-piece';
+                confeti.style.left = Math.random() * 100 + 'vw';
+                confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+                confeti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                confeti.style.animationDelay = (Math.random() * 1.5) + 's';
+                overlay.appendChild(confeti);
+            }
+        }
+
         function completarSesion(idSesion) {
             if (!progreso.completadosArray[idSesion]) {
                 progreso.completadosArray[idSesion] = true;
@@ -673,8 +851,26 @@
                 if (currentUser !== "") {
                     localStorage.setItem(`progreso_${currentUser}`, JSON.stringify(progreso));
                 }
+                
                 actualizarInterfaz();
+
+                if (progreso.totalCompletadas === 12) {
+                    mostrarCelebracion();
+                }
             }
+        }
+
+        function mostrarCelebracion() {
+            const modal = document.getElementById('celebration-modal');
+            document.getElementById('celebration-msg').innerHTML = `¡Felicidades <strong>${currentUser}</strong>! Has completado con éxito las 12 sesiones de <strong>Vitalidad Activa</strong>. Tu dedicación a tu salud es admirable.`;
+            modal.style.display = 'flex';
+            lanzarConfeti();
+        }
+
+        function cerrarCelebracion() {
+            document.getElementById('celebration-modal').style.display = 'none';
+            const btnProgreso = document.querySelectorAll('.nav-item')[1];
+            cambiarSeccion('sec-progreso', btnProgreso);
         }
 
         function actualizarInterfaz() {
