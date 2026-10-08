@@ -48,13 +48,36 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
+        /* Barra de estado con botón para cambiar cuenta */
         .user-status-bar {
             background-color: var(--electric-blue);
             color: var(--text-light);
-            padding: 8px;
+            padding: 10px 15px;
             text-align: center;
             font-weight: bold;
             font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-switch-user {
+            background-color: rgba(255, 255, 255, 0.25);
+            color: var(--text-light);
+            border: 1px solid var(--text-light);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.25s ease;
+        }
+
+        .btn-switch-user:hover {
+            background-color: var(--text-light);
+            color: var(--dark-blue);
+            transform: scale(1.05);
         }
 
         /* Caja de Motivación */
@@ -204,7 +227,7 @@
             line-height: 1.4;
         }
 
-        /* Botón de completar ALTAMENTE INTERACTIVO Y ANIMADO */
+        /* Botón de completar ALTAMENTE INTERACTIVO */
         .btn-complete {
             background: linear-gradient(135deg, #2ecc71, #27ae60);
             color: var(--text-light);
@@ -320,7 +343,7 @@
             transform: scale(1.2) rotate(8deg);
         }
 
-        /* Navegación Inferior Interactiva y Animada */
+        /* Navegación Inferior Interactiva */
         nav.nav-bottom {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -372,7 +395,7 @@
             transform: scale(0.95);
         }
 
-        /* Modal de Registro */
+        /* Modal de Registro y Cambiar Cuenta */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -516,7 +539,7 @@
 </head>
 <body>
 
-    <!-- Ventana Modal de Registro -->
+    <!-- Ventana Modal de Registro / Iniciar Sesión -->
     <div class="modal-overlay" id="account-modal">
         <div class="modal-content">
             <h2>Crea tu Cuenta Activa 🏁</h2>
@@ -541,8 +564,10 @@
         <h1>Vitalidad Activa</h1>
     </header>
 
-    <div class="user-status-bar" id="user-display">
-        Usuario: Invitado
+    <!-- Barra de estado del usuario con opción de Cambiar Cuenta -->
+    <div class="user-status-bar">
+        <span id="user-display">Usuario: Invitado</span>
+        <button class="btn-switch-user" id="btn-logout" onclick="cerrarSesion()" style="display: none;">🔄 Cambiar Cuenta</button>
     </div>
 
     <!-- Módulo de Motivación Diaria -->
@@ -779,12 +804,16 @@
                 currentUser = savedUser;
                 document.getElementById('account-modal').style.display = 'none'; 
                 document.getElementById('user-display').innerText = `¡Hola de nuevo, ${currentUser}! 👋`;
+                document.getElementById('btn-logout').style.display = 'inline-block';
                 
                 const savedData = localStorage.getItem(`progreso_${currentUser}`);
                 if (savedData) {
                     progreso = JSON.parse(savedData);
                 }
                 actualizarInterfaz();
+            } else {
+                document.getElementById('account-modal').style.display = 'flex';
+                document.getElementById('btn-logout').style.display = 'none';
             }
         };
 
@@ -813,6 +842,28 @@
 
             document.getElementById('account-modal').style.display = 'none';
             document.getElementById('user-display').innerText = `¡Bienvenido(a), ${currentUser}! 🏁`;
+            document.getElementById('btn-logout').style.display = 'inline-block';
+            
+            // Limpiar inputs
+            document.getElementById('username').value = "";
+            document.getElementById('password').value = "";
+            
+            actualizarInterfaz();
+        }
+
+        // FUNCIÓN PARA CERRAR SESIÓN / CAMBIAR DE USUARIO
+        function cerrarSesion() {
+            localStorage.removeItem('active_user_name');
+            currentUser = "";
+            progreso = {
+                totalCompletadas: 0,
+                completadosArray: new Array(13).fill(false)
+            };
+            
+            document.getElementById('user-display').innerText = "Usuario: Invitado";
+            document.getElementById('btn-logout').style.display = 'none';
+            document.getElementById('account-modal').style.display = 'flex';
+            
             actualizarInterfaz();
         }
 
@@ -844,14 +895,17 @@
         }
 
         function completarSesion(idSesion) {
+            if (!currentUser) {
+                alert("Debes iniciar sesión primero para guardar tu progreso.");
+                document.getElementById('account-modal').style.display = 'flex';
+                return;
+            }
+
             if (!progreso.completadosArray[idSesion]) {
                 progreso.completadosArray[idSesion] = true;
                 progreso.totalCompletadas++;
                 
-                if (currentUser !== "") {
-                    localStorage.setItem(`progreso_${currentUser}`, JSON.stringify(progreso));
-                }
-                
+                localStorage.setItem(`progreso_${currentUser}`, JSON.stringify(progreso));
                 actualizarInterfaz();
 
                 if (progreso.totalCompletadas === 12) {
@@ -890,6 +944,12 @@
             document.getElementById('contador-progreso').innerText = progreso.totalCompletadas;
             let porcentaje = (progreso.totalCompletadas / 12) * 100;
             document.getElementById('bar-fill').style.width = porcentaje + "%";
+
+            // Resetear medallas antes de evaluar
+            document.getElementById('medal-1').classList.remove('unlocked');
+            document.getElementById('medal-2').classList.remove('unlocked');
+            document.getElementById('medal-3').classList.remove('unlocked');
+            document.getElementById('medal-4').classList.remove('unlocked');
 
             if (progreso.totalCompletadas >= 1) document.getElementById('medal-1').classList.add('unlocked');
             if (progreso.totalCompletadas >= 3) document.getElementById('medal-2').classList.add('unlocked');
