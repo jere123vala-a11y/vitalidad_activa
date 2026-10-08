@@ -5,98 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitalidad Activa - Tu Pasaporte al Bienestar</title>
     <style>
-        /* Paleta de colores vibrante y llamativa */
+        /* ESTILO SPORT / ATHLETIC DARK MODE */
         :root {
-            --primary-orange: #ff6b6b;
-            --electric-blue: #4dadf7;
-            --dark-blue: #1a252f;
-            --vibrant-green: #2ecc71;
-            --gold-medal: #f1c40f;
-            --text-light: #ffffff;
-            --text-dark: #2c3e50;
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --neon-yellow: #facc15;
+            --neon-green: #22c55e;
+            --fire-orange: #ff5722;
+            --electric-blue: #38bdf8;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background-color: #f0f3f6;
-            color: var(--text-dark);
-            padding-bottom: 90px;
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            padding-bottom: 95px;
         }
 
-        /* Encabezado con imagen de fondo motivadora */
+        /* HEADERESTILO DEPORTIVO / GIMNASIO */
         header {
-            background: linear-gradient(rgba(26, 37, 47, 0.75), rgba(26, 37, 47, 0.75)), 
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.9)), 
                         url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             color: var(--text-light);
             text-align: center;
-            padding: 35px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 40px 20px 25px;
+            border-bottom: 3px solid var(--neon-yellow);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
         header h1 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+            font-weight: 900;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
         }
 
-        /* Barra de estado con botón para cambiar cuenta */
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* BARRA DE ESTADO Y CAMBIO DE CUENTA */
         .user-status-bar {
-            background-color: var(--electric-blue);
-            color: var(--text-light);
-            padding: 10px 15px;
+            background-color: var(--bg-card);
+            color: var(--electric-blue);
+            padding: 12px 20px;
             text-align: center;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 0.95rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #334155;
         }
 
         .btn-switch-user {
-            background-color: rgba(255, 255, 255, 0.25);
-            color: var(--text-light);
-            border: 1px solid var(--text-light);
-            padding: 5px 12px;
+            background: transparent;
+            color: var(--neon-yellow);
+            border: 1px solid var(--neon-yellow);
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.85rem;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 700;
             transition: all 0.25s ease;
+            text-transform: uppercase;
         }
 
         .btn-switch-user:hover {
-            background-color: var(--text-light);
-            color: var(--dark-blue);
+            background-color: var(--neon-yellow);
+            color: var(--bg-main);
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
             transform: scale(1.05);
         }
 
-        /* Caja de Motivación */
+        /* CAJA DE MOTIVACIÓN CON VIBE DE ENTRENAMIENTO */
         .motivation-box {
-            background: linear-gradient(135deg, #ffe066, #fcc419);
-            border-left: 6px solid #e67e22;
-            padding: 15px;
-            margin: 15px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #334155, #1e293b);
+            border-left: 5px solid var(--fire-orange);
+            padding: 16px;
+            margin: 18px 15px;
+            border-radius: 12px;
             text-align: center;
-            font-weight: bold;
-            font-size: 1.15rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            color: #5c3e00;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            color: var(--text-light);
             transition: transform 0.3s ease;
         }
 
         .motivation-box:hover {
-            transform: scale(1.02);
+            transform: translateY(-2px);
         }
 
         .container {
@@ -113,7 +128,7 @@
             display: block;
         }
 
-        /* Selector de Semanas Interactivo */
+        /* SELECTOR DE SEMANAS ATHLETIC */
         .semana-selector-container {
             margin: 20px 5px;
             display: flex;
@@ -122,29 +137,30 @@
         }
 
         .semana-selector-container label {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--dark-blue);
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--neon-yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .semana-select {
-            padding: 12px;
-            font-size: 1.1rem;
-            border-radius: 10px;
-            border: 3px solid var(--electric-blue);
-            background-color: #ffffff;
-            color: var(--dark-blue);
-            font-weight: bold;
+            padding: 14px;
+            font-size: 1.05rem;
+            border-radius: 12px;
+            border: 2px solid var(--electric-blue);
+            background-color: var(--bg-card);
+            color: var(--text-light);
+            font-weight: 700;
             cursor: pointer;
             flex: 1;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
         }
 
         .semana-select:hover, .semana-select:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(77, 173, 247, 0.3);
-            border-color: var(--primary-orange);
+            border-color: var(--neon-yellow);
+            box-shadow: 0 0 12px rgba(250, 204, 21, 0.3);
             outline: none;
         }
 
@@ -156,20 +172,21 @@
             display: block;
         }
 
-        /* Tarjetas de Ejercicios Interactivas */
+        /* TARJETAS DE EJERCICIO SPORT STYLE */
         .video-card {
-            background-color: var(--text-light);
-            border-radius: 16px;
+            background-color: var(--bg-card);
+            border-radius: 18px;
             overflow: hidden;
             margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+            border: 1px solid #334155;
             transition: all 0.3s ease;
         }
 
         .video-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            border-color: var(--neon-yellow);
+            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.15);
         }
 
         .video-placeholder {
@@ -178,36 +195,43 @@
             width: 100%;
             aspect-ratio: 16/9;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
+            justify-content: flex-start;
             position: relative;
+            padding: 15px;
         }
 
         .video-placeholder::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.55);
-            transition: background 0.3s ease;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.2));
+            transition: opacity 0.3s ease;
         }
 
-        .video-card:hover .video-placeholder::before {
-            background: rgba(0, 0, 0, 0.4);
+        .badge-intensity {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--fire-orange);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
 
         .video-placeholder span {
             color: var(--text-light);
-            font-weight: bold;
-            text-align: center;
-            padding: 15px;
-            font-size: 1.2rem;
+            font-weight: 800;
+            font-size: 1.1rem;
             z-index: 1;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-            transition: transform 0.3s ease;
-        }
-
-        .video-card:hover .video-placeholder span {
-            transform: scale(1.05);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .video-info {
@@ -216,29 +240,32 @@
 
         .video-info h3 {
             margin-bottom: 8px;
-            color: var(--dark-blue);
-            font-size: 1.4rem;
+            color: var(--neon-yellow);
+            font-size: 1.35rem;
+            font-weight: 800;
         }
 
         .video-info p {
-            color: #556270;
-            font-size: 1.05rem;
-            margin-bottom: 15px;
-            line-height: 1.4;
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 18px;
+            line-height: 1.5;
         }
 
-        /* Botón de completar ALTAMENTE INTERACTIVO */
+        /* BOTÓN DE COMPLETAR DEPORTIVO */
         .btn-complete {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: var(--text-light);
+            background: linear-gradient(135deg, var(--neon-green), #16a34a);
+            color: #ffffff;
             border: none;
             padding: 16px 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 1.15rem;
-            font-weight: bold;
+            font-size: 1.1rem;
+            font-weight: 800;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
             transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             align-items: center;
@@ -248,59 +275,63 @@
 
         .btn-complete:hover:not(:disabled) {
             transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 8px 18px rgba(46, 204, 113, 0.45);
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.5);
         }
 
         .btn-complete:active:not(:disabled) {
             transform: translateY(1px) scale(0.98);
-            box-shadow: 0 2px 6px rgba(46, 204, 113, 0.4);
         }
 
         .btn-complete:disabled {
-            background: #9ca3af !important;
+            background: #334155 !important;
+            color: #64748b !important;
             box-shadow: none;
             cursor: not-allowed;
             transform: none !important;
         }
 
-        /* Panel de Progreso */
+        /* PANEL DE PROGRESO ATHLETIC */
         .progress-header {
-            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)),
                         url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=1000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             padding: 30px 20px;
-            border-radius: 16px;
+            border-radius: 20px;
             text-align: center;
             margin-bottom: 25px;
             border: 2px solid var(--electric-blue);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
         }
 
         .progress-header h2 {
-            color: var(--dark-blue);
+            color: var(--neon-yellow);
             font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
         }
 
         .progress-bar-container {
-            background-color: #dee2e6;
-            border-radius: 12px;
-            height: 24px;
+            background-color: #0f172a;
+            border-radius: 15px;
+            height: 26px;
             width: 100%;
-            margin-top: 15px;
+            margin-top: 18px;
             overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #334155;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
         }
 
         .progress-bar-fill {
-            background: linear-gradient(90deg, var(--electric-blue), var(--vibrant-green));
+            background: linear-gradient(90deg, var(--electric-blue), var(--neon-green));
             height: 100%;
             width: 0%;
             transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
         }
 
-        /* Cuadrícula de Medallas Interactivas */
+        /* CUADRÍCULA DE MEDALLAS */
         .medals-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -309,31 +340,31 @@
         }
 
         .medal-item {
-            background-color: var(--text-light);
+            background-color: var(--bg-card);
             padding: 20px 15px;
-            border-radius: 14px;
+            border-radius: 16px;
             text-align: center;
-            opacity: 0.25;
+            opacity: 0.3;
             transition: all 0.4s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border: 1px solid #334155;
         }
 
         .medal-item.unlocked {
             opacity: 1;
             transform: translateY(-3px);
-            border: 2px solid var(--gold-medal);
-            background: linear-gradient(135deg, #ffffff, #fffdf0);
-            box-shadow: 0 6px 15px rgba(241, 196, 15, 0.2);
+            border: 2px solid var(--neon-yellow);
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            box-shadow: 0 6px 20px rgba(250, 204, 21, 0.2);
             cursor: pointer;
         }
 
         .medal-item.unlocked:hover {
             transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 10px 22px rgba(241, 196, 15, 0.35);
+            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.35);
         }
 
         .medal-icon {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             display: block;
             margin-bottom: 8px;
             transition: transform 0.3s ease;
@@ -343,16 +374,17 @@
             transform: scale(1.2) rotate(8deg);
         }
 
-        /* Navegación Inferior Interactiva */
+        /* NAVEGACIÓN INFERIOR SPORT */
         nav.nav-bottom {
             position: fixed;
             bottom: 0; left: 0; right: 0;
             height: 80px;
-            background-color: var(--dark-blue);
+            background-color: #0b0f19;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+            border-top: 2px solid #1e293b;
+            box-shadow: 0 -6px 20px rgba(0,0,0,0.5);
             z-index: 1000;
         }
 
@@ -365,9 +397,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #94a3b8;
+            color: var(--text-muted);
             cursor: pointer;
-            font-size: 1.05rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
         }
 
@@ -379,27 +414,24 @@
 
         .nav-item:hover .nav-item-icon {
             transform: translateY(-4px) scale(1.2);
+            color: var(--neon-yellow);
         }
 
         .nav-item.active {
-            color: var(--primary-orange);
-            font-weight: bold;
+            color: var(--neon-yellow);
         }
 
         .nav-item.active .nav-item-icon {
             transform: translateY(-2px) scale(1.15);
-            filter: drop-shadow(0 2px 8px rgba(255, 107, 107, 0.5));
+            filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.6));
         }
 
-        .nav-item:active {
-            transform: scale(0.95);
-        }
-
-        /* Modal de Registro y Cambiar Cuenta */
+        /* MODALES */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -407,22 +439,25 @@
         }
 
         .modal-content {
-            background: white;
+            background: var(--bg-card);
             padding: 30px;
-            border-radius: 16px;
+            border-radius: 20px;
             width: 90%;
             max-width: 400px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 2px solid var(--electric-blue);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .modal-content h2 {
             margin-bottom: 15px;
-            color: var(--dark-blue);
+            color: var(--neon-yellow);
+            font-size: 1.6rem;
+            text-transform: uppercase;
         }
 
         .modal-content p {
-            color: #64748b;
+            color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 20px;
         }
@@ -431,64 +466,63 @@
             width: 100%;
             padding: 14px;
             margin-bottom: 15px;
-            border: 2px solid #cbd5e1;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            border: 2px solid #334155;
+            border-radius: 12px;
+            background-color: #0f172a;
+            color: var(--text-light);
+            font-size: 1.05rem;
             transition: all 0.3s ease;
         }
 
         .form-input:focus {
-            border-color: var(--electric-blue);
-            box-shadow: 0 0 0 4px rgba(77, 173, 247, 0.2);
+            border-color: var(--neon-yellow);
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
             outline: none;
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, var(--primary-orange), #ff4757);
+            background: linear-gradient(135deg, var(--fire-orange), #ea580c);
             color: white;
             border: none;
-            padding: 14px;
+            padding: 15px;
             width: 100%;
-            border-radius: 10px;
-            font-size: 1.15rem;
-            font-weight: bold;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
-            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
+            transition: all 0.25s ease;
         }
 
         .btn-submit:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 16px rgba(255, 107, 107, 0.45);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.6);
         }
 
-        .btn-submit:active {
-            transform: translateY(1px) scale(0.98);
-        }
-
-        /* MODAL DE CELEBRACIÓN DE MEDALLA (12 SESIONES) */
+        /* CELEBRACIÓN 12 SESIONES */
         .celebration-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0, 0, 0, 0.88);
+            background-color: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(8px);
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 3000;
-            overflow: hidden;
         }
 
         .celebration-content {
-            background: linear-gradient(135deg, #ffffff, #fffdf0);
-            border: 4px solid var(--gold-medal);
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 3px solid var(--neon-yellow);
             padding: 35px 25px;
             border-radius: 24px;
             width: 90%;
             max-width: 450px;
             text-align: center;
-            box-shadow: 0 0 40px rgba(241, 196, 15, 0.6);
+            box-shadow: 0 0 50px rgba(250, 204, 21, 0.5);
             animation: zoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
         }
 
         .animated-medal {
@@ -499,14 +533,15 @@
         }
 
         .celebration-content h2 {
-            color: #d35400;
+            color: var(--neon-yellow);
             font-size: 1.8rem;
             margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         .celebration-content p {
-            color: var(--dark-blue);
-            font-size: 1.1rem;
+            color: var(--text-light);
+            font-size: 1.05rem;
             line-height: 1.5;
             margin-bottom: 20px;
         }
@@ -518,7 +553,7 @@
 
         @keyframes pulseMedal {
             0% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.2) rotate(10deg); filter: drop-shadow(0 0 15px rgba(241, 196, 15, 0.8)); }
+            50% { transform: scale(1.2) rotate(10deg); filter: drop-shadow(0 0 20px rgba(250, 204, 21, 0.8)); }
             100% { transform: scale(1) rotate(0deg); }
         }
 
@@ -539,14 +574,14 @@
 </head>
 <body>
 
-    <!-- Ventana Modal de Registro / Iniciar Sesión -->
+    <!-- Ventana Modal de Registro -->
     <div class="modal-overlay" id="account-modal">
         <div class="modal-content">
-            <h2>Crea tu Cuenta Activa 🏁</h2>
-            <p>Ingresa tus datos para guardar tu progreso de forma segura y automática en este dispositivo.</p>
+            <h2>¡Únete al Reto! ⚡</h2>
+            <p>Ingresa tu nombre para comenzar tu entrenamiento de 4 semanas y guardar tu progreso.</p>
             <input type="text" id="username" class="form-input" placeholder="Tu Nombre (Ej: Papá o Mamá)" required>
-            <input type="password" id="password" class="form-input" placeholder="Elige una contraseña corta" required>
-            <button class="btn-submit" onclick="registrarUsuario()">Comenzar mi Entrenamiento</button>
+            <input type="password" id="password" class="form-input" placeholder="Contraseña rápida" required>
+            <button class="btn-submit" onclick="registrarUsuario()">Iniciar Entrenamiento</button>
         </div>
     </div>
 
@@ -554,25 +589,24 @@
     <div class="celebration-overlay" id="celebration-modal">
         <div class="celebration-content">
             <span class="animated-medal">🏆</span>
-            <h2>¡FELICIDADES CAMPEÓN(A)!</h2>
-            <p id="celebration-msg">¡Has completado el programa completo de 12 sesiones! Te has ganado la <strong>Medalla de Oro de Vitalidad Activa</strong>.</p>
-            <button class="btn-submit" style="background: linear-gradient(135deg, #2ecc71, #27ae60);" onclick="cerrarCelebracion()">¡Recibir mi Medalla!</button>
+            <h2>¡OBJETIVO CUMPLIDO!</h2>
+            <p id="celebration-msg">¡Has completado con éxito las 12 sesiones del programa <strong>Vitalidad Activa</strong>! Te has ganado el rango de <strong>Campeón Activo</strong>.</p>
+            <button class="btn-submit" style="background: linear-gradient(135deg, var(--neon-green), #16a34a);" onclick="cerrarCelebracion()">¡Reclamar Medalla!</button>
         </div>
     </div>
 
     <header>
-        <h1>Vitalidad Activa</h1>
+        <h1>⚡ Vitalidad Activa</h1>
+        <p>Programa de Entrenamiento para Adultos</p>
     </header>
 
-    <!-- Barra de estado del usuario con opción de Cambiar Cuenta -->
     <div class="user-status-bar">
-        <span id="user-display">Usuario: Invitado</span>
-        <button class="btn-switch-user" id="btn-logout" onclick="cerrarSesion()" style="display: none;">🔄 Cambiar Cuenta</button>
+        <span id="user-display">Atleta: Invitado</span>
+        <button class="btn-switch-user" id="btn-logout" onclick="cerrarSesion()" style="display: none;">🔄 Cambiar Atleta</button>
     </div>
 
-    <!-- Módulo de Motivación Diaria -->
     <div class="motivation-box" id="motivation-box">
-        "¡Cada paso cuenta! Tu constancia de hoy es tu salud de mañana."
+        "🔥 ¡Cada movimiento suma! Tu salud es tu mayor victoria."
     </div>
 
     <div class="container">
@@ -581,12 +615,12 @@
         <section id="sec-inicio" class="page-section active">
             
             <div class="semana-selector-container">
-                <label for="semana-select">Elegir Semana:</label>
+                <label for="semana-select">Fase de Entrenamiento:</label>
                 <select id="semana-select" class="semana-select" onchange="cambiarSemana(this.value)">
-                    <option value="1">Semana 1 (Sesiones 1-3)</option>
-                    <option value="2">Semana 2 (Sesiones 4-6)</option>
-                    <option value="3">Semana 3 (Sesiones 7-9)</option>
-                    <option value="4">Semana 4 (Sesiones 10-12)</option>
+                    <option value="1">Semana 1: Activación Articular</option>
+                    <option value="2">Semana 2: Fuerza y Cardio Suave</option>
+                    <option value="3">Semana 3: Coordinación y Cargas</option>
+                    <option value="4">Semana 4: Resistencia e Integración</option>
                 </select>
             </div>
 
@@ -594,32 +628,35 @@
             <div id="block-semana-1" class="semana-block active">
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 1: Movilidad Articular ]</span>
+                        <span class="badge-intensity">Suave • 10 Min</span>
+                        <span>[ VIDEO - SESIÓN 1 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 1: Movilidad Completa</h3>
-                        <p>Ejercicios muy suaves para calentar las articulaciones y despertar el cuerpo.</p>
-                        <button class="btn-complete" onclick="completarSesion(1)" id="btn-s1">Marcar como Completado</button>
+                        <h3>Sesión 1: Movilidad Articular Completa</h3>
+                        <p>Movimientos suaves para desbloquear cuello, hombros, cadera y rodillas de forma segura.</p>
+                        <button class="btn-complete" onclick="completarSesion(1)" id="btn-s1">🔥 Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 2: Equilibrio Activo ]</span>
+                        <span class="badge-intensity">Equilibrio • 12 Min</span>
+                        <span>[ VIDEO - SESIÓN 2 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 2: Equilibrio y Estabilidad</h3>
-                        <p>Rutina enfocada en dar seguridad y fuerza al caminar en el día a día.</p>
-                        <button class="btn-complete" onclick="completarSesion(2)" id="btn-s2">Marcar como Completado</button>
+                        <h3>Sesión 2: Equilibrio y Firmeza</h3>
+                        <p>Fortalecimiento de tobillos y planta del pie para prevenir caídas y dar estabilidad.</p>
+                        <button class="btn-complete" onclick="completarSesion(2)" id="btn-s2">🔥 Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 3: Estiramientos Relajantes ]</span>
+                        <span class="badge-intensity">Recuperación • 15 Min</span>
+                        <span>[ VIDEO - SESIÓN 3 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 3: Estiramientos Suaves</h3>
-                        <p>Ideal para relajar los músculos tensos y descansar plenamente al terminar la semana.</p>
-                        <button class="btn-complete" onclick="completarSesion(3)" id="btn-s3">Marcar como Completado</button>
+                        <h3>Sesión 3: Estiramientos Guiados</h3>
+                        <p>Rutina de relajación muscular y respiración para cerrar con energía la primera semana.</p>
+                        <button class="btn-complete" onclick="completarSesion(3)" id="btn-s3">🔥 Marcar como Completado</button>
                     </div>
                 </div>
             </div>
@@ -628,32 +665,35 @@
             <div id="block-semana-2" class="semana-block">
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1434596955112-0f6643de2723?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 4: Fuerza de Piernas ]</span>
+                        <span class="badge-intensity">Fuerza Base • 12 Min</span>
+                        <span>[ VIDEO - SESIÓN 4 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 4: Fuerza en las Piernas</h3>
-                        <p>Ejercicios básicos para fortalecer los muslos y facilitar el levantarse de sillas.</p>
-                        <button class="btn-complete" onclick="completarSesion(4)" id="btn-s4">Marcar como Completado</button>
+                        <h3>Sesión 4: Potencia en Piernas</h3>
+                        <p>Ejercicios adaptados para fortalecer muslos y glúteos apoyándose en una silla.</p>
+                        <button class="btn-complete" onclick="completarSesion(4)" id="btn-s4">🔥 Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 5: Cardio Suave ]</span>
+                        <span class="badge-intensity">Cardio • 15 Min</span>
+                        <span>[ VIDEO - SESIÓN 5 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 5: Ritmo Cardíaco Saludable</h3>
-                        <p>Marcha en el propio sitio combinada con movimientos de brazos para mejorar la resistencia.</p>
-                        <button class="btn-complete" onclick="completarSesion(5)" id="btn-s5">Marcar como Completado</button>
+                        <h3>Sesión 5: Cardio Ritmo Saludable</h3>
+                        <p>Marcha activa continua para activar la circulación sanguínea y oxigenar el corazón.</p>
+                        <button class="btn-complete" onclick="completarSesion(5)" id="btn-s5">🔥 Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1594737625751-a580757e232b?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 6: Postura Corporal ]</span>
+                        <span class="badge-intensity">Postura • 12 Min</span>
+                        <span>[ VIDEO - SESIÓN 6 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 6: Espalda Sana y Postura</h3>
-                        <p>Ejercicios sentados o de pie para abrir el pecho y aliviar tensiones en la espalda alta.</p>
-                        <button class="btn-complete" onclick="completarSesion(6)" id="btn-s6">Marcar como Completado</button>
+                        <h3>Sesión 6: Espalda Fuerte y Postura</h3>
+                        <p>Liberación de molestias lumbares y fortalecimiento de la zona dorsal.</p>
+                        <button class="btn-complete" onclick="completarSesion(6)" id="btn-s6">🔥 Marcar como Completado</button>
                     </div>
                 </div>
             </div>
@@ -662,32 +702,35 @@
             <div id="block-semana-3" class="semana-block">
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 7: Fuerza con Pesas Ligeras ]</span>
+                        <span class="badge-intensity">Carga Ligera • 15 Min</span>
+                        <span>[ VIDEO - SESIÓN 7 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 7: Fuerza con Pesas Ligeras</h3>
-                        <p>Rutina usando botellas de agua o mancuernas muy pequeñas para fortalecer los brazos.</p>
-                        <button class="btn-complete" onclick="completarSesion(7)" id="btn-s7">Marcar como Completado</button>
+                        <h3>Sesión 7: Fuerza de Brazos y Hombros</h3>
+                        <p>Trabajo con mancuernas ligeras o botellas de agua para tonificar extremidades superiores.</p>
+                        <button class="btn-complete" onclick="completarSesion(7)" id="btn-s7">🔥 Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 8: Coordinación ]</span>
+                        <span class="badge-intensity">Agilidad • 12 Min</span>
+                        <span>[ VIDEO - SESIÓN 8 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 8: Coordinación y Agilidad</h3>
-                        <p>Ejercicios divertidos y sencillos para mantener la mente y el cuerpo conectados.</p>
-                        <button class="btn-complete" onclick="completarSesion(8)" id="btn-s8">Marcar como Completado</button>
+                        <h3>Sesión 8: Agilidad Mente y Cuerpo</h3>
+                        <p>Coordinación ojo-pie con secuencias dinámicas para mantener reflejos activos.</p>
+                        <button class="btn-complete" onclick="completarSesion(8)" id="btn-s8">🔥 Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 9: Flexibilidad de Cadera ]</span>
+                        <span class="badge-intensity">Flexibilidad • 15 Min</span>
+                        <span>[ VIDEO - SESIÓN 9 ]</span>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 9: Movilidad de Cadera y Tronco</h3>
-                        <p>Movimientos controlados para soltar la rigidez de la parte inferior del cuerpo.</p>
-                        <button class="btn-complete" onclick="completarSesion(9)" id="btn-s9">Marcar como Completado</button>
+                        <p>Ejercicios para soltar rigidez articular y mejorar el rango de movimiento.</p>
+                        <button class="btn-complete" onclick="completarSesion(9)" id="btn-s9">🔥 Marcar como Completado</button>
                     </div>
                 </div>
             </div>
@@ -696,32 +739,35 @@
             <div id="block-semana-4" class="semana-block">
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1447452001602-7090c7ab2db3?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 10: Resistencia Total ]</span>
+                        <span class="badge-intensity">Circuito • 18 Min</span>
+                        <span>[ VIDEO - SESIÓN 10 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 10: Circuito de Resistencia</h3>
-                        <p>Combinación de los ejercicios aprendidos para mantener un cuerpo activo y fuerte.</p>
-                        <button class="btn-complete" onclick="completarSesion(10)" id="btn-s10">Marcar como Completado</button>
+                        <h3>Sesión 10: Circuito de Resistencia Integrada</h3>
+                        <p>Combinación fluida de fuerza y cardio ligero para potenciar la energía diaria.</p>
+                        <button class="btn-complete" onclick="completarSesion(10)" id="btn-s10">🔥 Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 11: Fuerza Funcional ]</span>
+                        <span class="badge-intensity">Funcional • 15 Min</span>
+                        <span>[ VIDEO - SESIÓN 11 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 11: Fuerza para la Vida Diaria</h3>
-                        <p>Movimientos que imitan cargar compras o agacharse de forma segura y firme.</p>
-                        <button class="btn-complete" onclick="completarSesion(11)" id="btn-s11">Marcar como Completado</button>
+                        <h3>Sesión 11: Fuerza para el Día a Día</h3>
+                        <p>Movimientos prácticos que facilitan agacharse, cargar objetos y mantenerse erguido.</p>
+                        <button class="btn-complete" onclick="completarSesion(11)" id="btn-s11">🔥 Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop');">
-                        <span>[ VIDEO - SESIÓN 12: Gran Cierre Activo ]</span>
+                        <span class="badge-intensity">Gran Cierre • 20 Min</span>
+                        <span>[ VIDEO - SESIÓN 12 ]</span>
                     </div>
                     <div class="video-info">
-                        <h3>Sesión 12: Celebración y Estiramiento Final</h3>
-                        <p>Última sesión del programa para festejar el gran esfuerzo realizado por tu salud.</p>
-                        <button class="btn-complete" onclick="completarSesion(12)" id="btn-s12">Marcar como Completado</button>
+                        <h3>Sesión 12: Gran Final y Celebración</h3>
+                        <p>Rutina completa de cierre para celebrar la transformación hacia una vida saludable.</p>
+                        <button class="btn-complete" onclick="completarSesion(12)" id="btn-s12">🔥 Marcar como Completado</button>
                     </div>
                 </div>
             </div>
@@ -731,37 +777,37 @@
         <!-- SECCIÓN 2: PROGRESO Y MEDALLAS -->
         <section id="sec-progreso" class="page-section">
             <div class="progress-header">
-                <h2>Tu Progreso Total</h2>
-                <p style="font-size: 1.3rem; margin-top: 10px;">
-                    Has completado <span id="contador-progreso" style="color: var(--vibrant-green); font-weight: bold; font-size: 1.8rem;">0</span> de 12 sesiones.
+                <h2>MARCADOR DE PROGRESO</h2>
+                <p style="font-size: 1.2rem; margin-top: 10px; color: var(--text-light);">
+                    Has completado <span id="contador-progreso" style="color: var(--neon-green); font-weight: 900; font-size: 2rem;">0</span> de 12 entrenamientos.
                 </p>
                 <div class="progress-bar-container">
                     <div id="bar-fill" class="progress-bar-fill"></div>
                 </div>
             </div>
 
-            <h3 style="color: var(--dark-blue); margin: 15px 0 10px 5px;">Tus Logros y Medallas Virtuales</h3>
+            <h3 style="color: var(--neon-yellow); margin: 20px 0 10px 5px; text-transform: uppercase; font-size: 1.2rem;">Medallas y Trofeos Desbloqueables</h3>
             
             <div class="medals-grid">
                 <div class="medal-item" id="medal-1">
                     <span class="medal-icon">🏁</span>
-                    <strong>Primer Paso</strong>
-                    <p style="font-size: 0.85rem; color: #64748b;">Completa la primera sesión</p>
+                    <strong style="color: var(--text-light);">Primer Paso</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Completa el entrenamiento 1</p>
                 </div>
                 <div class="medal-item" id="medal-2">
-                    <span class="medal-icon">🔋</span>
-                    <strong>Gran Comienzo</strong>
-                    <p style="font-size: 0.85rem; color: #64748b;">Completa la Semana 1</p>
+                    <span class="medal-icon">⚡</span>
+                    <strong style="color: var(--text-light);">Consistencia</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Completa la Semana 1</p>
                 </div>
                 <div class="medal-item" id="medal-3">
-                    <span class="medal-icon">⚡</span>
-                    <strong>Mitad del Camino</strong>
-                    <p style="font-size: 0.85rem; color: #64748b;">Completa 6 sesiones</p>
+                    <span class="medal-icon">🔋</span>
+                    <strong style="color: var(--text-light);">Mitad del Reto</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Completa 6 sesiones</p>
                 </div>
                 <div class="medal-item" id="medal-4">
                     <span class="medal-icon">🏆</span>
-                    <strong>¡Campeón Total!</strong>
-                    <p style="font-size: 0.85rem; color: #64748b;">Completa las 12 sesiones</p>
+                    <strong style="color: var(--text-light);">Atleta Activo</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Completa las 12 sesiones</p>
                 </div>
             </div>
         </section>
@@ -771,12 +817,12 @@
     <!-- Menú Inferior de Navegación -->
     <nav class="nav-bottom">
         <button class="nav-item active" onclick="cambiarSeccion('sec-inicio', this)">
-            <span class="nav-item-icon">🏠</span>
-            Inicio / Rutinas
+            <span class="nav-item-icon">🏋️</span>
+            Rutinas
         </button>
         <button class="nav-item" onclick="cambiarSeccion('sec-progreso', this)">
-            <span class="nav-item-icon">📅</span>
-            Mi Progreso
+            <span class="nav-item-icon">🏅</span>
+            Marcador
         </button>
     </nav>
 
@@ -788,22 +834,22 @@
         };
 
         const frases = [
-            "¡Cada paso cuenta! Tu constancia de hoy es tu salud de mañana.",
-            "No importa qué tan lento vayas, lo importante es que no te detengas.",
-            "Hacer ejercicio es el mayor acto de amor propio para tu cuerpo.",
-            "¡Tu esfuerzo de hoy es la fuerza e independencia de tu mañana!",
-            "¡Un día más activo es un paso más hacia una vida llena de energía!"
+            "🔥 ¡Cada movimiento suma! Tu salud es tu mayor victoria.",
+            "⚡ No importa el ritmo, lo importante es mantenerse en movimiento.",
+            "💪 El ejercicio diario es el mejor regalo para tu cuerpo y mente.",
+            "🚀 ¡Tu esfuerzo de hoy garantiza tu energía e independencia de mañana!",
+            "🏆 ¡Un día más activo es un paso gigante hacia el bienestar total!"
         ];
 
         window.onload = function() {
             const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
-            document.getElementById('motivation-box').innerText = `"${fraseAleatoria}"`;
+            document.getElementById('motivation-box').innerText = fraseAleatoria;
             
             const savedUser = localStorage.getItem('active_user_name');
             if (savedUser) {
                 currentUser = savedUser;
                 document.getElementById('account-modal').style.display = 'none'; 
-                document.getElementById('user-display').innerText = `¡Hola de nuevo, ${currentUser}! 👋`;
+                document.getElementById('user-display').innerText = `Atleta: ${currentUser} ⚡`;
                 document.getElementById('btn-logout').style.display = 'inline-block';
                 
                 const savedData = localStorage.getItem(`progreso_${currentUser}`);
@@ -822,7 +868,7 @@
             const passInput = document.getElementById('password').value.trim();
 
             if (nameInput === "" || passInput === "") {
-                alert("Por favor, ingresa tu nombre y una contraseña corta.");
+                alert("Por favor, ingresa tu nombre y tu contraseña.");
                 return;
             }
 
@@ -841,17 +887,15 @@
             }
 
             document.getElementById('account-modal').style.display = 'none';
-            document.getElementById('user-display').innerText = `¡Bienvenido(a), ${currentUser}! 🏁`;
+            document.getElementById('user-display').innerText = `Atleta: ${currentUser} ⚡`;
             document.getElementById('btn-logout').style.display = 'inline-block';
             
-            // Limpiar inputs
             document.getElementById('username').value = "";
             document.getElementById('password').value = "";
             
             actualizarInterfaz();
         }
 
-        // FUNCIÓN PARA CERRAR SESIÓN / CAMBIAR DE USUARIO
         function cerrarSesion() {
             localStorage.removeItem('active_user_name');
             currentUser = "";
@@ -860,7 +904,7 @@
                 completadosArray: new Array(13).fill(false)
             };
             
-            document.getElementById('user-display').innerText = "Usuario: Invitado";
+            document.getElementById('user-display').innerText = "Atleta: Invitado";
             document.getElementById('btn-logout').style.display = 'none';
             document.getElementById('account-modal').style.display = 'flex';
             
@@ -881,9 +925,9 @@
 
         function lanzarConfeti() {
             const overlay = document.getElementById('celebration-modal');
-            const colores = ['#ff6b6b', '#4dadf7', '#2ecc71', '#f1c40f', '#e67e22', '#9b59b6'];
+            const colores = ['#facc15', '#22c55e', '#38bdf8', '#ff5722', '#ea580c'];
             
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < 45; i++) {
                 const confeti = document.createElement('div');
                 confeti.className = 'confetti-piece';
                 confeti.style.left = Math.random() * 100 + 'vw';
@@ -896,7 +940,7 @@
 
         function completarSesion(idSesion) {
             if (!currentUser) {
-                alert("Debes iniciar sesión primero para guardar tu progreso.");
+                alert("Debes ingresar tu nombre primero para guardar tu progreso.");
                 document.getElementById('account-modal').style.display = 'flex';
                 return;
             }
@@ -916,7 +960,7 @@
 
         function mostrarCelebracion() {
             const modal = document.getElementById('celebration-modal');
-            document.getElementById('celebration-msg').innerHTML = `¡Felicidades <strong>${currentUser}</strong>! Has completado con éxito las 12 sesiones de <strong>Vitalidad Activa</strong>. Tu dedicación a tu salud es admirable.`;
+            document.getElementById('celebration-msg').innerHTML = `¡Felicidades <strong>${currentUser}</strong>! Has completado con éxito las 12 sesiones de <strong>Vitalidad Activa</strong>. ¡Tu constancia e impacto en tu salud son ejemplares!`;
             modal.style.display = 'flex';
             lanzarConfeti();
         }
@@ -932,10 +976,10 @@
                 const boton = document.getElementById(`btn-s${i}`);
                 if (boton) {
                     if (progreso.completadosArray[i]) {
-                        boton.innerText = "✓ Sesión Completada";
+                        boton.innerText = "✓ Entrenamiento Completado";
                         boton.disabled = true;
                     } else {
-                        boton.innerText = "Marcar como Completado";
+                        boton.innerText = "🔥 Marcar como Completado";
                         boton.disabled = false;
                     }
                 }
@@ -945,7 +989,6 @@
             let porcentaje = (progreso.totalCompletadas / 12) * 100;
             document.getElementById('bar-fill').style.width = porcentaje + "%";
 
-            // Resetear medallas antes de evaluar
             document.getElementById('medal-1').classList.remove('unlocked');
             document.getElementById('medal-2').classList.remove('unlocked');
             document.getElementById('medal-3').classList.remove('unlocked');
