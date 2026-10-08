@@ -5,16 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitalidad Activa - Tu Pasaporte al Bienestar</title>
     <style>
-        /* ESTILO SPORT / ATHLETIC DARK MODE */
-        :root {
+        /* TEMA DEPORTIVO FUERTE (DARK GYM) - POR DEFECTO */
+        :root[data-theme="deportivo"] {
             --bg-main: #0f172a;
             --bg-card: #1e293b;
+            --bg-header: linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(30, 41, 59, 0.92));
             --neon-yellow: #facc15;
             --neon-green: #22c55e;
             --fire-orange: #ff5722;
             --electric-blue: #38bdf8;
             --text-light: #f8fafc;
             --text-muted: #94a3b8;
+            --border-color: #334155;
+            --box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            --nav-bg: #0b0f19;
+            --input-bg: #0f172a;
+        }
+
+        /* TEMA MINIMALISTA CLARO (BIENESTAR / CLEAN) */
+        :root[data-theme="minimalista"] {
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-header: linear-gradient(135deg, rgba(14, 165, 233, 0.9), rgba(30, 58, 138, 0.92));
+            --neon-yellow: #0284c7;
+            --neon-green: #16a34a;
+            --fire-orange: #e11d48;
+            --electric-blue: #0284c7;
+            --text-light: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --nav-bg: #ffffff;
+            --input-bg: #f1f5f9;
         }
 
         * {
@@ -22,6 +44,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -30,30 +53,30 @@
             padding-bottom: 95px;
         }
 
-        /* HEADERESTILO DEPORTIVO / GIMNASIO */
+        /* HEADER DUAL */
         header {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.9)), 
+            background: var(--bg-header), 
                         url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            color: var(--text-light);
+            color: #ffffff;
             text-align: center;
-            padding: 40px 20px 25px;
+            padding: 35px 20px 20px;
             border-bottom: 3px solid var(--neon-yellow);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         header h1 {
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 900;
-            color: var(--neon-yellow);
-            text-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         header p {
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-size: 0.95rem;
             margin-top: 5px;
             text-transform: uppercase;
@@ -61,25 +84,45 @@
             font-weight: 600;
         }
 
-        /* BARRA DE ESTADO Y CAMBIO DE CUENTA */
+        /* BARRA DE ESTADO, USUARIO Y SELECTOR DE TEMA */
         .user-status-bar {
             background-color: var(--bg-card);
             color: var(--electric-blue);
-            padding: 12px 20px;
+            padding: 12px 15px;
             text-align: center;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid var(--border-color);
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .controls-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-select {
+            background: var(--input-bg);
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            outline: none;
         }
 
         .btn-switch-user {
             background: transparent;
             color: var(--neon-yellow);
             border: 1px solid var(--neon-yellow);
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
             cursor: pointer;
@@ -90,23 +133,25 @@
 
         .btn-switch-user:hover {
             background-color: var(--neon-yellow);
-            color: var(--bg-main);
-            box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+            color: #0f172a;
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
             transform: scale(1.05);
         }
 
-        /* CAJA DE MOTIVACIÓN CON VIBE DE ENTRENAMIENTO */
+        /* CAJA DE MOTIVACIÓN */
         .motivation-box {
-            background: linear-gradient(135deg, #334155, #1e293b);
+            background: var(--bg-card);
             border-left: 5px solid var(--fire-orange);
             padding: 16px;
             margin: 18px 15px;
             border-radius: 12px;
             text-align: center;
             font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-size: 1.05rem;
+            box-shadow: var(--box-shadow);
             color: var(--text-light);
+            border: 1px solid var(--border-color);
+            border-left-width: 5px;
             transition: transform 0.3s ease;
         }
 
@@ -128,7 +173,7 @@
             display: block;
         }
 
-        /* SELECTOR DE SEMANAS ATHLETIC */
+        /* SELECTOR DE SEMANAS */
         .semana-selector-container {
             margin: 20px 5px;
             display: flex;
@@ -138,15 +183,15 @@
 
         .semana-selector-container label {
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--neon-yellow);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .semana-select {
-            padding: 14px;
-            font-size: 1.05rem;
+            padding: 12px;
+            font-size: 1rem;
             border-radius: 12px;
             border: 2px solid var(--electric-blue);
             background-color: var(--bg-card);
@@ -154,13 +199,12 @@
             font-weight: 700;
             cursor: pointer;
             flex: 1;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: var(--box-shadow);
             transition: all 0.3s ease;
         }
 
         .semana-select:hover, .semana-select:focus {
             border-color: var(--neon-yellow);
-            box-shadow: 0 0 12px rgba(250, 204, 21, 0.3);
             outline: none;
         }
 
@@ -172,21 +216,20 @@
             display: block;
         }
 
-        /* TARJETAS DE EJERCICIO SPORT STYLE */
+        /* TARJETAS DE EJERCICIO */
         .video-card {
             background-color: var(--bg-card);
             border-radius: 18px;
             overflow: hidden;
             margin-bottom: 25px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-            border: 1px solid #334155;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
         .video-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--neon-yellow);
-            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.15);
         }
 
         .video-placeholder {
@@ -205,8 +248,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.2));
-            transition: opacity 0.3s ease;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.2));
         }
 
         .badge-intensity {
@@ -214,7 +256,7 @@
             top: 15px;
             right: 15px;
             background-color: var(--fire-orange);
-            color: #fff;
+            color: #ffffff;
             font-size: 0.75rem;
             font-weight: 800;
             padding: 5px 12px;
@@ -222,16 +264,17 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             z-index: 2;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
         .video-placeholder span {
-            color: var(--text-light);
+            color: #ffffff;
             font-weight: 800;
             font-size: 1.1rem;
             z-index: 1;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
         }
 
         .video-info {
@@ -241,7 +284,7 @@
         .video-info h3 {
             margin-bottom: 8px;
             color: var(--neon-yellow);
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: 800;
         }
 
@@ -252,7 +295,7 @@
             line-height: 1.5;
         }
 
-        /* BOTÓN DE COMPLETAR DEPORTIVO */
+        /* BOTÓN DE COMPLETAR */
         .btn-complete {
             background: linear-gradient(135deg, var(--neon-green), #16a34a);
             color: #ffffff;
@@ -260,7 +303,7 @@
             padding: 16px 20px;
             border-radius: 12px;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 800;
             width: 100%;
             text-transform: uppercase;
@@ -275,7 +318,7 @@
 
         .btn-complete:hover:not(:disabled) {
             transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.5);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.45);
         }
 
         .btn-complete:active:not(:disabled) {
@@ -283,44 +326,41 @@
         }
 
         .btn-complete:disabled {
-            background: #334155 !important;
-            color: #64748b !important;
+            background: #94a3b8 !important;
+            color: #ffffff !important;
             box-shadow: none;
             cursor: not-allowed;
             transform: none !important;
+            opacity: 0.6;
         }
 
-        /* PANEL DE PROGRESO ATHLETIC */
+        /* PANEL DE PROGRESO */
         .progress-header {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)),
-                        url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=1000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+            background: var(--bg-card);
             padding: 30px 20px;
             border-radius: 20px;
             text-align: center;
             margin-bottom: 25px;
             border: 2px solid var(--electric-blue);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            box-shadow: var(--box-shadow);
         }
 
         .progress-header h2 {
             color: var(--neon-yellow);
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 800;
         }
 
         .progress-bar-container {
-            background-color: #0f172a;
+            background-color: var(--input-bg);
             border-radius: 15px;
             height: 26px;
             width: 100%;
             margin-top: 18px;
             overflow: hidden;
-            border: 1px solid #334155;
-            box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
         }
 
         .progress-bar-fill {
@@ -328,7 +368,6 @@
             height: 100%;
             width: 0%;
             transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
         }
 
         /* CUADRÍCULA DE MEDALLAS */
@@ -344,23 +383,21 @@
             padding: 20px 15px;
             border-radius: 16px;
             text-align: center;
-            opacity: 0.3;
+            opacity: 0.35;
             transition: all 0.4s ease;
-            border: 1px solid #334155;
+            border: 1px solid var(--border-color);
         }
 
         .medal-item.unlocked {
             opacity: 1;
             transform: translateY(-3px);
             border: 2px solid var(--neon-yellow);
-            background: linear-gradient(135deg, #1e293b, #0f172a);
             box-shadow: 0 6px 20px rgba(250, 204, 21, 0.2);
             cursor: pointer;
         }
 
         .medal-item.unlocked:hover {
             transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.35);
         }
 
         .medal-icon {
@@ -374,17 +411,17 @@
             transform: scale(1.2) rotate(8deg);
         }
 
-        /* NAVEGACIÓN INFERIOR SPORT */
+        /* NAVEGACIÓN INFERIOR */
         nav.nav-bottom {
             position: fixed;
             bottom: 0; left: 0; right: 0;
             height: 80px;
-            background-color: #0b0f19;
+            background-color: var(--nav-bg);
             display: flex;
             justify-content: space-around;
             align-items: center;
-            border-top: 2px solid #1e293b;
-            box-shadow: 0 -6px 20px rgba(0,0,0,0.5);
+            border-top: 2px solid var(--border-color);
+            box-shadow: 0 -6px 20px rgba(0,0,0,0.15);
             z-index: 1000;
         }
 
@@ -399,7 +436,7 @@
             justify-content: center;
             color: var(--text-muted);
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -423,7 +460,6 @@
 
         .nav-item.active .nav-item-icon {
             transform: translateY(-2px) scale(1.15);
-            filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.6));
         }
 
         /* MODALES */
@@ -452,7 +488,7 @@
         .modal-content h2 {
             margin-bottom: 15px;
             color: var(--neon-yellow);
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             text-transform: uppercase;
         }
 
@@ -466,28 +502,27 @@
             width: 100%;
             padding: 14px;
             margin-bottom: 15px;
-            border: 2px solid #334155;
+            border: 2px solid var(--border-color);
             border-radius: 12px;
-            background-color: #0f172a;
+            background-color: var(--input-bg);
             color: var(--text-light);
-            font-size: 1.05rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
 
         .form-input:focus {
             border-color: var(--neon-yellow);
-            box-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
             outline: none;
         }
 
         .btn-submit {
             background: linear-gradient(135deg, var(--fire-orange), #ea580c);
-            color: white;
+            color: #ffffff;
             border: none;
             padding: 15px;
             width: 100%;
             border-radius: 12px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -498,7 +533,6 @@
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.6);
         }
 
         /* CELEBRACIÓN 12 SESIONES */
@@ -514,7 +548,7 @@
         }
 
         .celebration-content {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
+            background: var(--bg-card);
             border: 3px solid var(--neon-yellow);
             padding: 35px 25px;
             border-radius: 24px;
@@ -553,7 +587,7 @@
 
         @keyframes pulseMedal {
             0% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.2) rotate(10deg); filter: drop-shadow(0 0 20px rgba(250, 204, 21, 0.8)); }
+            50% { transform: scale(1.2) rotate(10deg); }
             100% { transform: scale(1) rotate(0deg); }
         }
 
@@ -602,7 +636,14 @@
 
     <div class="user-status-bar">
         <span id="user-display">Atleta: Invitado</span>
-        <button class="btn-switch-user" id="btn-logout" onclick="cerrarSesion()" style="display: none;">🔄 Cambiar Atleta</button>
+        <div class="controls-wrapper">
+            <!-- SELECTOR DE TEMA CLARO / OSCURO -->
+            <select id="theme-selector" class="theme-select" onchange="cambiarTema(this.value)">
+                <option value="deportivo">⚡ Modo Deportivo (Fuerte)</option>
+                <option value="minimalista">🌱 Modo Minimalista (Claro)</option>
+            </select>
+            <button class="btn-switch-user" id="btn-logout" onclick="cerrarSesion()" style="display: none;">🔄 Cambiar Atleta</button>
+        </div>
     </div>
 
     <div class="motivation-box" id="motivation-box">
@@ -778,7 +819,7 @@
         <section id="sec-progreso" class="page-section">
             <div class="progress-header">
                 <h2>MARCADOR DE PROGRESO</h2>
-                <p style="font-size: 1.2rem; margin-top: 10px; color: var(--text-light);">
+                <p style="font-size: 1.2rem; margin-top: 10px;">
                     Has completado <span id="contador-progreso" style="color: var(--neon-green); font-weight: 900; font-size: 2rem;">0</span> de 12 entrenamientos.
                 </p>
                 <div class="progress-bar-container">
@@ -791,22 +832,22 @@
             <div class="medals-grid">
                 <div class="medal-item" id="medal-1">
                     <span class="medal-icon">🏁</span>
-                    <strong style="color: var(--text-light);">Primer Paso</strong>
+                    <strong>Primer Paso</strong>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Completa el entrenamiento 1</p>
                 </div>
                 <div class="medal-item" id="medal-2">
                     <span class="medal-icon">⚡</span>
-                    <strong style="color: var(--text-light);">Consistencia</strong>
+                    <strong>Consistencia</strong>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Completa la Semana 1</p>
                 </div>
                 <div class="medal-item" id="medal-3">
                     <span class="medal-icon">🔋</span>
-                    <strong style="color: var(--text-light);">Mitad del Reto</strong>
+                    <strong>Mitad del Reto</strong>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Completa 6 sesiones</p>
                 </div>
                 <div class="medal-item" id="medal-4">
                     <span class="medal-icon">🏆</span>
-                    <strong style="color: var(--text-light);">Atleta Activo</strong>
+                    <strong>Atleta Activo</strong>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Completa las 12 sesiones</p>
                 </div>
             </div>
@@ -842,6 +883,11 @@
         ];
 
         window.onload = function() {
+            // Cargar Tema Guardado
+            const temaGuardado = localStorage.getItem('active_theme') || 'deportivo';
+            cambiarTema(temaGuardado);
+            document.getElementById('theme-selector').value = temaGuardado;
+
             const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
             document.getElementById('motivation-box').innerText = fraseAleatoria;
             
@@ -862,6 +908,12 @@
                 document.getElementById('btn-logout').style.display = 'none';
             }
         };
+
+        // FUNCIÓN PARA CAMBIAR EL TEMA VISUAL DE LA APLICACIÓN
+        function cambiarTema(nombreTema) {
+            document.documentElement.setAttribute('data-theme', nombreTema);
+            localStorage.setItem('active_theme', nombreTema);
+        }
 
         function registrarUsuario() {
             const nameInput = document.getElementById('username').value.trim();
