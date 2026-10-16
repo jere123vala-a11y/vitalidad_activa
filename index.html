@@ -202,45 +202,20 @@
             border: 1px solid var(--border-color);
         }
 
-        .video-placeholder {
-            background-size: cover;
-            background-position: center;
+        .video-wrapper {
+            position: relative;
             width: 100%;
             aspect-ratio: 16/9;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-            position: relative;
-            padding: 18px;
+            background-color: #000000;
         }
 
-        .video-placeholder::before {
-            content: '';
+        .video-wrapper iframe {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to top, rgba(11, 19, 41, 0.85), rgba(11, 19, 41, 0.1));
-        }
-
-        .badge-intensity {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: rgba(15, 23, 42, 0.8);
-            border: 1px solid var(--border-color);
-            color: var(--electric-blue);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 20px;
-            z-index: 2;
-        }
-
-        .video-placeholder span {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 1rem;
-            z-index: 1;
-            letter-spacing: 0.5px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         .video-info {
@@ -400,6 +375,24 @@
             text-align: center;
             border: 1px solid var(--border-color);
             box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .btn-close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .btn-close-modal:hover {
+            color: var(--text-light);
         }
 
         .modal-content h2 {
@@ -487,6 +480,7 @@
 
     <div class="modal-overlay" id="account-modal">
         <div class="modal-content">
+            <button class="btn-close-modal" onclick="cerrarModalLogin()" title="Cerrar ventana">&times;</button>
             <h2>Bienvenido a Vitalidad Activa</h2>
             <p>Ingresa tus datos para registrar tu progreso en el programa de entrenamiento.</p>
             <input type="text" id="username" class="form-input" placeholder="Nombre completo o usuario" required>
@@ -516,7 +510,7 @@
                 <option value="deportivo">Modo Oscuro</option>
                 <option value="minimalista">Modo Claro</option>
             </select>
-            <button class="btn-switch-user" id="btn-logout" onclick="cerrarSesion()" style="display: none;">Cambiar Usuario</button>
+            <button class="btn-switch-user" id="btn-logout" onclick="abrirModalLogin()">Iniciar Sesión</button>
         </div>
     </div>
 
@@ -539,9 +533,8 @@
             <!-- SEMANA 1 -->
             <div id="block-semana-1" class="semana-block active">
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">8 Minutos</span>
-                        <span>[ SESIÓN 01 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/XGR71VT79TQ" title="Sesión 1" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 1: Movilidad Articular Completa</h3>
@@ -550,9 +543,8 @@
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">10 Minutos</span>
-                        <span>[ SESIÓN 02 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/MGnLq_9jAqg" title="Sesión 2" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 2: Equilibrio, Estabilidad y Postura</h3>
@@ -561,9 +553,8 @@
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">9 Minutos</span>
-                        <span>[ SESIÓN 03 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/BW3CG9kKTkU" title="Sesión 3" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 3: Estiramiento Guiado y Respiración</h3>
@@ -576,9 +567,8 @@
             <!-- SEMANA 2 -->
             <div id="block-semana-2" class="semana-block">
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1434596955112-0f6643de2723?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">12 Minutos</span>
-                        <span>[ SESIÓN 04 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/U3l1rcdYq7c" title="Sesión 4" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 4: Fortalecimiento de Extremidades Inferiores</h3>
@@ -587,9 +577,8 @@
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">15 Minutos</span>
-                        <span>[ SESIÓN 05 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/MS8lL6zTWFQ" title="Sesión 5" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 5: Acondicionamiento Cardiovascular Ligero</h3>
@@ -598,9 +587,8 @@
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1594737625751-a580757e232b?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">14 Minutos</span>
-                        <span>[ SESIÓN 06 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/xUoL5ShGYto" title="Sesión 6" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 6: Salud Espinal y Corrección Postural</h3>
@@ -613,9 +601,8 @@
             <!-- SEMANA 3 -->
             <div id="block-semana-3" class="semana-block">
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">18 Minutos</span>
-                        <span>[ SESIÓN 07 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/sLhdz-cGz3U" title="Sesión 7" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 7: Tonificación de Extremidades Superiores</h3>
@@ -624,9 +611,8 @@
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">20 Minutos</span>
-                        <span>[ SESIÓN 08 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/MGnLq_9jAqg" title="Sesión 8" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 8: Coordinación y Agilidad Motora</h3>
@@ -635,9 +621,8 @@
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">22 Minutos</span>
-                        <span>[ SESIÓN 09 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/XGR71VT79TQ" title="Sesión 9" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 9: Movilidad Pélvica y Articulación de Cadera</h3>
@@ -650,9 +635,8 @@
             <!-- SEMANA 4 -->
             <div id="block-semana-4" class="semana-block">
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1447452001602-7090c7ab2db3?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">28 Minutos</span>
-                        <span>[ SESIÓN 10 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/U3l1rcdYq7c" title="Sesión 10" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 10: Circuito de Resistencia General</h3>
@@ -661,9 +645,8 @@
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">30 Minutos</span>
-                        <span>[ SESIÓN 11 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/MS8lL6zTWFQ" title="Sesión 11" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 11: Entrenamiento Funcional Integrado</h3>
@@ -672,9 +655,8 @@
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">32 Minutos</span>
-                        <span>[ SESIÓN 12 ]</span>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/BW3CG9kKTkU" title="Sesión 12" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 12: Rutina Integral y Evaluación de Cierre</h3>
@@ -757,7 +739,7 @@
                 currentUser = savedUser;
                 document.getElementById('account-modal').style.display = 'none'; 
                 document.getElementById('user-display').innerText = `Usuario: ${currentUser}`;
-                document.getElementById('btn-logout').style.display = 'inline-block';
+                document.getElementById('btn-logout').innerText = "Cambiar Usuario";
                 
                 const savedData = localStorage.getItem(`progreso_${currentUser}`);
                 if (savedData) {
@@ -766,13 +748,21 @@
                 actualizarInterfaz();
             } else {
                 document.getElementById('account-modal').style.display = 'flex';
-                document.getElementById('btn-logout').style.display = 'none';
+                document.getElementById('btn-logout').innerText = "Iniciar Sesión";
             }
         };
 
         function cambiarTema(nombreTema) {
             document.documentElement.setAttribute('data-theme', nombreTema);
             localStorage.setItem('active_theme', nombreTema);
+        }
+
+        function abrirModalLogin() {
+            document.getElementById('account-modal').style.display = 'flex';
+        }
+
+        function cerrarModalLogin() {
+            document.getElementById('account-modal').style.display = 'none';
         }
 
         function registrarUsuario() {
@@ -800,7 +790,7 @@
 
             document.getElementById('account-modal').style.display = 'none';
             document.getElementById('user-display').innerText = `Usuario: ${currentUser}`;
-            document.getElementById('btn-logout').style.display = 'inline-block';
+            document.getElementById('btn-logout').innerText = "Cambiar Usuario";
             
             document.getElementById('username').value = "";
             document.getElementById('password').value = "";
@@ -817,8 +807,8 @@
             };
             
             document.getElementById('user-display').innerText = "Usuario: Invitado";
-            document.getElementById('btn-logout').style.display = 'none';
-            document.getElementById('account-modal').style.display = 'flex';
+            document.getElementById('btn-logout').innerText = "Iniciar Sesión";
+            abrirModalLogin();
             
             actualizarInterfaz();
         }
@@ -851,7 +841,7 @@
         function toggleSesion(idSesion) {
             if (!currentUser) {
                 alert("Por favor, inicia sesión para registrar tu progreso.");
-                document.getElementById('account-modal').style.display = 'flex';
+                abrirModalLogin();
                 return;
             }
 
