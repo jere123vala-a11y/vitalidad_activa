@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitalidad Activa - Tu Pasaporte al Bienestar</title>
+    
+    <!-- PEGA AQUÍ TU ETIQUETA META DE GOOGLE SEARCH CONSOLE -->
+    <meta name="google-site-verification" content="AQUÍ_TUS_LETRAS_Y_NÚMEROS_DE_GOOGLE" />
+
     <style>
         :root[data-theme="deportivo"] {
             --bg-main: #0f172a;
@@ -538,7 +542,7 @@
                 </select>
             </div>
 
-            <!-- SEMANA 1 (5 a 6 Minutos) -->
+            <!-- SEMANA 1 -->
             <div id="block-semana-1" class="semana-block active">
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop');">
@@ -575,7 +579,7 @@
                 </div>
             </div>
 
-            <!-- SEMANA 2 (8 a 10 Minutos) -->
+            <!-- SEMANA 2 -->
             <div id="block-semana-2" class="semana-block">
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1434596955112-0f6643de2723?q=80&w=600&auto=format&fit=crop');">
@@ -612,7 +616,7 @@
                 </div>
             </div>
 
-            <!-- SEMANA 3 (12 a 15 Minutos) -->
+            <!-- SEMANA 3 -->
             <div id="block-semana-3" class="semana-block">
                 <div class="video-card">
                     <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop');">
@@ -649,7 +653,268 @@
                 </div>
             </div>
 
-            <!-- SEMANA 4 (18 a 22 Minutos) -->
+            <!-- SEMANA 4 -->
             <div id="block-semana-4" class="semana-block">
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('
+                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1447452001602-7090c7ab2db3?q=80&w=600&auto=format&fit=crop');">
+                        <span class="badge-intensity">18 Min</span>
+                        <span>[ SESIÓN 10 ]</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Sesión 10: Circuito de Resistencia</h3>
+                        <p>Combinación fluida de fuerza y cardio ligero.</p>
+                        <button class="btn-complete" onclick="toggleSesion(10)" id="btn-s10">🔥 Marcar como Completado</button>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=600&auto=format&fit=crop');">
+                        <span class="badge-intensity">20 Min</span>
+                        <span>[ SESIÓN 11 ]</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Sesión 11: Fuerza Funcional</h3>
+                        <p>Movimientos prácticos para el día a día.</p>
+                        <button class="btn-complete" onclick="toggleSesion(11)" id="btn-s11">🔥 Marcar como Completado</button>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop');">
+                        <span class="badge-intensity">22 Min</span>
+                        <span>[ SESIÓN 12 ]</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Sesión 12: Gran Final</h3>
+                        <p>Rutina completa de cierre y celebración.</p>
+                        <button class="btn-complete" onclick="toggleSesion(12)" id="btn-s12">🔥 Marcar como Completado</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: PROGRESO -->
+        <section id="sec-progreso" class="page-section">
+            <div class="progress-header">
+                <h2>MARCADOR DE PROGRESO</h2>
+                <p style="font-size: 1.2rem; margin-top: 10px;">
+                    Has completado <span id="contador-progreso" style="color: var(--neon-green); font-weight: 900; font-size: 2rem;">0</span> de 12.
+                </p>
+                <div class="progress-bar-container">
+                    <div id="bar-fill" class="progress-bar-fill"></div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--neon-yellow); margin: 20px 0 10px 5px; text-transform: uppercase; font-size: 1.2rem;">Medallas</h3>
+            
+            <div class="medals-grid">
+                <div class="medal-item" id="medal-1">
+                    <span class="medal-icon">🏁</span>
+                    <strong>Primer Paso</strong>
+                </div>
+                <div class="medal-item" id="medal-2">
+                    <span class="medal-icon">⚡</span>
+                    <strong>Consistencia</strong>
+                </div>
+                <div class="medal-item" id="medal-3">
+                    <span class="medal-icon">🔋</span>
+                    <strong>Mitad del Reto</strong>
+                </div>
+                <div class="medal-item" id="medal-4">
+                    <span class="medal-icon">🏆</span>
+                    <strong>Atleta Activo</strong>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <nav class="nav-bottom">
+        <button class="nav-item active" onclick="cambiarSeccion('sec-inicio', this)">
+            <span class="nav-item-icon">🏋️</span>
+            Rutinas
+        </button>
+        <button class="nav-item" onclick="cambiarSeccion('sec-progreso', this)">
+            <span class="nav-item-icon">🏅</span>
+            Marcador
+        </button>
+    </nav>
+
+    <script>
+        let currentUser = "";
+        let progreso = {
+            totalCompletadas: 0,
+            completadosArray: new Array(13).fill(false)
+        };
+
+        const frases = [
+            "🔥 ¡Cada movimiento suma! Tu salud es tu mayor victoria.",
+            "⚡ No importa el ritmo, lo importante es mantenerse en movimiento.",
+            "💪 El ejercicio diario es el mejor regalo para tu cuerpo y mente."
+        ];
+
+        window.onload = function() {
+            const temaGuardado = localStorage.getItem('active_theme') || 'deportivo';
+            cambiarTema(temaGuardado);
+            document.getElementById('theme-selector').value = temaGuardado;
+
+            const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+            document.getElementById('motivation-box').innerText = fraseAleatoria;
+            
+            const savedUser = localStorage.getItem('active_user_name');
+            if (savedUser) {
+                currentUser = savedUser;
+                document.getElementById('account-modal').style.display = 'none'; 
+                document.getElementById('user-display').innerText = `Atleta: ${currentUser} ⚡`;
+                document.getElementById('btn-logout').style.display = 'inline-block';
+                
+                const savedData = localStorage.getItem(`progreso_${currentUser}`);
+                if (savedData) {
+                    progreso = JSON.parse(savedData);
+                }
+                actualizarInterfaz();
+            } else {
+                document.getElementById('account-modal').style.display = 'flex';
+                document.getElementById('btn-logout').style.display = 'none';
+            }
+        };
+
+        function cambiarTema(nombreTema) {
+            document.documentElement.setAttribute('data-theme', nombreTema);
+            localStorage.setItem('active_theme', nombreTema);
+        }
+
+        function registrarUsuario() {
+            const nameInput = document.getElementById('username').value.trim();
+            const passInput = document.getElementById('password').value.trim();
+
+            if (nameInput === "" || passInput === "") {
+                alert("Por favor, ingresa tu nombre y contraseña.");
+                return;
+            }
+
+            currentUser = nameInput;
+            localStorage.setItem('active_user_name', currentUser);
+            
+            const existingData = localStorage.getItem(`progreso_${currentUser}`);
+            if (existingData) {
+                progreso = JSON.parse(existingData);
+            } else {
+                progreso = {
+                    totalCompletadas: 0,
+                    completadosArray: new Array(13).fill(false)
+                };
+                localStorage.setItem(`progreso_${currentUser}`, JSON.stringify(progreso));
+            }
+
+            document.getElementById('account-modal').style.display = 'none';
+            document.getElementById('user-display').innerText = `Atleta: ${currentUser} ⚡`;
+            document.getElementById('btn-logout').style.display = 'inline-block';
+            
+            document.getElementById('username').value = "";
+            document.getElementById('password').value = "";
+            
+            actualizarInterfaz();
+        }
+
+        function cerrarSesion() {
+            localStorage.removeItem('active_user_name');
+            currentUser = "";
+            progreso = {
+                totalCompletadas: 0,
+                completadosArray: new Array(13).fill(false)
+            };
+            
+            document.getElementById('user-display').innerText = "Atleta: Invitado";
+            document.getElementById('btn-logout').style.display = 'none';
+            document.getElementById('account-modal').style.display = 'flex';
+            
+            actualizarInterfaz();
+        }
+
+        function cambiarSeccion(sectionId, boton) {
+            document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            boton.classList.add('active');
+        }
+
+        function cambiarSemana(numSemana) {
+            document.querySelectorAll('.semana-block').forEach(block => block.classList.remove('active'));
+            document.getElementById(`block-semana-${numSemana}`).classList.add('active');
+        }
+
+        function lanzarConfeti() {
+            const overlay = document.getElementById('celebration-modal');
+            const colores = ['#facc15', '#22c55e', '#38bdf8', '#ff5722'];
+            for (let i = 0; i < 30; i++) {
+                const confeti = document.createElement('div');
+                confeti.className = 'confetti-piece';
+                confeti.style.left = Math.random() * 100 + 'vw';
+                confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+                confeti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                overlay.appendChild(confeti);
+            }
+        }
+
+        function toggleSesion(idSesion) {
+            if (!currentUser) {
+                alert("Debes ingresar tu nombre primero.");
+                document.getElementById('account-modal').style.display = 'flex';
+                return;
+            }
+
+            if (!progreso.completadosArray[idSesion]) {
+                progreso.completadosArray[idSesion] = true;
+                progreso.totalCompletadas++;
+                
+                localStorage.setItem(`progreso_${currentUser}`, JSON.stringify(progreso));
+                actualizarInterfaz();
+
+                if (progreso.totalCompletadas === 12) {
+                    document.getElementById('celebration-modal').style.display = 'flex';
+                    lanzarConfeti();
+                }
+            } else {
+                progreso.completadosArray[idSesion] = false;
+                progreso.totalCompletadas = Math.max(0, progreso.totalCompletadas - 1);
+                
+                localStorage.setItem(`progreso_${currentUser}`, JSON.stringify(progreso));
+                actualizarInterfaz();
+            }
+        }
+
+        function cerrarCelebracion() {
+            document.getElementById('celebration-modal').style.display = 'none';
+            const btnProgreso = document.querySelectorAll('.nav-item')[1];
+            cambiarSeccion('sec-progreso', btnProgreso);
+        }
+
+        function actualizarInterfaz() {
+            for (let i = 1; i <= 12; i++) {
+                const boton = document.getElementById(`btn-s${i}`);
+                if (boton) {
+                    if (progreso.completadosArray[i]) {
+                        boton.innerText = "✓ Completado (Haz clic para desmarcar)";
+                        boton.classList.add('completed');
+                    } else {
+                        boton.innerText = "🔥 Marcar como Completado";
+                        boton.classList.remove('completed');
+                    }
+                }
+            }
+
+            document.getElementById('contador-progreso').innerText = progreso.totalCompletadas;
+            let porcentaje = (progreso.totalCompletadas / 12) * 100;
+            document.getElementById('bar-fill').style.width = porcentaje + "%";
+
+            document.getElementById('medal-1').classList.remove('unlocked');
+            document.getElementById('medal-2').classList.remove('unlocked');
+            document.getElementById('medal-3').classList.remove('unlocked');
+            document.getElementById('medal-4').classList.remove('unlocked');
+
+            if (progreso.totalCompletadas >= 1) document.getElementById('medal-1').classList.add('unlocked');
+            if (progreso.totalCompletadas >= 3) document.getElementById('medal-2').classList.add('unlocked');
+            if (progreso.totalCompletadas >= 6) document.getElementById('medal-3').classList.add('unlocked');
+            if (progreso.totalCompletadas >= 12) document.getElementById('medal-4').classList.add('unlocked');
+        }
+    </script>
+</body>
+</html>
