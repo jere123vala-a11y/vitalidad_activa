@@ -1,941 +1,762 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="deportivo">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitalidad Activa - Plataforma de Bienestar Integral</title>
-    
-    <!-- ETIQUETA REAL DE VERIFICACIÓN DE GOOGLE -->
-    <meta name="google-site-verification" content="NIeicfJh4vq5dEcODv-jvHpqNTHrdMghao2AbiqMpPI" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitalidad Activa - Entrenamiento Seguro y Progresivo</title>
+  <meta name="description" content="Programa progresivo de 4 semanas de ejercicio seguro y accesible para adultos principiantes. Desarrollado por Jeremías Valarezo." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-hover: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --accent: #38bdf8;
+      --border: #334155;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+      --radius: 16px;
+    }
 
-    <style>
-        :root[data-theme="deportivo"] {
-            --bg-main: #0b1329;
-            --bg-card: #162238;
-            --bg-header: linear-gradient(135deg, #0d1b2a, #1b263b);
-            --neon-yellow: #facc15;
-            --neon-green: #10b981;
-            --fire-orange: #f97316;
-            --electric-blue: #38bdf8;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #1e293b;
-            --box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
-            --nav-bg: #0d1b2a;
-            --input-bg: #0b1329;
-        }
+    body.light-theme {
+      --bg: #f1f5f9;
+      --surface: #ffffff;
+      --surface-hover: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --primary: #059669;
+      --primary-hover: #047857;
+      --accent: #0284c7;
+      --border: #cbd5e1;
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    }
 
-        :root[data-theme="minimalista"] {
-            --bg-main: #f8fafc;
-            --bg-card: #ffffff;
-            --bg-header: linear-gradient(135deg, #0f172a, #1e293b);
-            --neon-yellow: #0284c7;
-            --neon-green: #059669;
-            --fire-orange: #ea580c;
-            --electric-blue: #0284c7;
-            --text-light: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            --nav-bg: #ffffff;
-            --input-bg: #f1f5f9;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      padding-bottom: 95px;
+      line-height: 1.5;
+    }
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-light);
-            padding-bottom: 95px;
-        }
+    header {
+      background-color: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
 
-        header {
-            background: var(--bg-header);
-            color: #ffffff;
-            text-align: center;
-            padding: 40px 20px 25px;
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        header h1 {
-            font-size: 2rem;
-            letter-spacing: 1px;
-            font-weight: 800;
-            color: #ffffff;
-        }
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #fff;
+      font-weight: bold;
+    }
 
-        header p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-top: 6px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
+    .brand h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
 
-        .user-status-bar {
-            background-color: var(--bg-card);
-            color: var(--electric-blue);
-            padding: 14px 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+    .brand p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
 
-        .controls-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .theme-btn {
+      background: var(--surface-hover);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
 
-        .theme-select {
-            background: var(--input-bg);
-            color: var(--text-light);
-            border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            outline: none;
-        }
+    .theme-btn:hover {
+      border-color: var(--primary);
+    }
 
-        .btn-switch-user {
-            background: transparent;
-            color: var(--neon-yellow);
-            border: 1px solid var(--neon-yellow);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
 
-        .btn-switch-user:hover {
-            background-color: var(--neon-yellow);
-            color: #0f172a;
-        }
+    .motivation-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(56, 189, 248, 0.15));
+      border: 1px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-        .motivation-box {
-            background: var(--bg-card);
-            border-left: 4px solid var(--electric-blue);
-            padding: 18px;
-            margin: 20px 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1rem;
-            box-shadow: var(--box-shadow);
-            color: var(--text-light);
-            border: 1px solid var(--border-color);
-            border-left-width: 4px;
-        }
+    .motivation-banner span {
+      font-size: 1.8rem;
+    }
 
-        .container {
-            padding: 10px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .motivation-banner p {
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
 
-        .page-section {
-            display: none;
-        }
+    .view-section {
+      display: none;
+    }
 
-        .page-section.active {
-            display: block;
-        }
+    .view-section.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
 
-        .semana-selector-container {
-            margin: 20px 5px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        .semana-selector-container label {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    /* Selector de Semanas */
+    .week-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
 
-        .semana-select {
-            padding: 12px 16px;
-            font-size: 0.95rem;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-card);
-            color: var(--text-light);
-            font-weight: 600;
-            cursor: pointer;
-            flex: 1;
-            box-shadow: var(--box-shadow);
-            outline: none;
-        }
+    .week-tab {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      color: var(--text);
+      padding: 12px 8px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
 
-        .semana-block {
-            display: none;
-        }
+    .week-tab small {
+      display: block;
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
 
-        .semana-block.active {
-            display: block;
-        }
+    .week-tab.active {
+      border-color: var(--primary);
+      background: rgba(16, 185, 129, 0.12);
+    }
 
-        .video-card {
-            background-color: var(--bg-card);
-            border-radius: 14px;
-            overflow: hidden;
-            margin-bottom: 25px;
-            box-shadow: var(--box-shadow);
-            border: 1px solid var(--border-color);
-        }
+    /* Tarjetas de Sesiones */
+    .sessions-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-        .video-placeholder {
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            aspect-ratio: 16/9;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-            position: relative;
-            padding: 18px;
-        }
+    .session-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s ease;
+    }
 
-        .video-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to top, rgba(11, 19, 41, 0.85), rgba(11, 19, 41, 0.1));
-        }
+    .session-card.completed {
+      border-color: var(--primary);
+    }
 
-        .badge-intensity {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: rgba(15, 23, 42, 0.8);
-            border: 1px solid var(--border-color);
-            color: var(--electric-blue);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 20px;
-            z-index: 2;
-        }
+    .session-header {
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
 
-        .video-placeholder span {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 1rem;
-            z-index: 1;
-            letter-spacing: 0.5px;
-        }
+    .session-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
 
-        .video-info {
-            padding: 20px;
-        }
+    .session-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
 
-        .video-info h3 {
-            margin-bottom: 8px;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
+    .session-meta {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
 
-        .video-info p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      background: #000;
+    }
 
-        .btn-complete {
-            background: var(--electric-blue);
-            color: #0b1329;
-            border: none;
-            padding: 14px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 700;
-            width: 100%;
-            transition: all 0.2s ease;
-        }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
 
-        .btn-complete.completed {
-            background: transparent;
-            color: var(--neon-green);
-            border: 1px solid var(--neon-green);
-        }
+    .session-body {
+      padding: 18px 20px;
+    }
 
-        .progress-header {
-            background: var(--bg-card);
-            padding: 35px 25px;
-            border-radius: 16px;
-            text-align: center;
-            margin-bottom: 25px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
-        }
+    .session-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
 
-        .progress-header h2 {
-            color: var(--text-light);
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
+    .complete-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--surface-hover);
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
 
-        .progress-bar-container {
-            background-color: var(--input-bg);
-            border-radius: 12px;
-            height: 20px;
-            width: 100%;
-            margin-top: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
+    .complete-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
 
-        .progress-bar-fill {
-            background: linear-gradient(90deg, var(--electric-blue), var(--neon-green));
-            height: 100%;
-            width: 0%;
-            transition: width 0.6s ease;
-        }
+    .session-card.completed .complete-btn {
+      background: var(--primary);
+      color: #fff;
+    }
 
-        .medals-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
+    /* Sección de Progreso y Medallas */
+    .progress-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
 
-        .medal-item {
-            background-color: var(--bg-card);
-            padding: 24px 18px;
-            border-radius: 14px;
-            text-align: center;
-            opacity: 0.4;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
 
-        .medal-item.unlocked {
-            opacity: 1;
-            border: 1px solid var(--neon-yellow);
-            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.1);
-        }
+    .progress-bar-bg {
+      width: 100%;
+      height: 16px;
+      background: var(--surface-hover);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
 
-        .medal-icon {
-            font-size: 3rem;
-            display: block;
-            margin-bottom: 10px;
-        }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.4s ease;
+    }
 
-        nav.nav-bottom {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            height: 75px;
-            background-color: var(--nav-bg);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-top: 1px solid var(--border-color);
-            z-index: 1000;
-        }
+    .badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+    }
 
-        .nav-item {
-            background: none;
-            border: none;
-            flex: 1;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
+    .badge-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      opacity: 0.45;
+      filter: grayscale(1);
+      transition: all 0.3s ease;
+    }
 
-        .nav-item-icon {
-            font-size: 1.6rem;
-            margin-bottom: 4px;
-        }
+    .badge-item.unlocked {
+      opacity: 1;
+      filter: grayscale(0);
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
 
-        .nav-item.active {
-            color: var(--electric-blue);
-        }
+    .badge-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      display: block;
+    }
 
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(11, 19, 41, 0.85);
-            backdrop-filter: blur(6px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-        }
+    .badge-item h3 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
 
-        .modal-content {
-            background: var(--bg-card);
-            padding: 35px 30px;
-            border-radius: 18px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--box-shadow);
-            position: relative;
-        }
+    .badge-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
 
-        .btn-close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.4rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
+    .reset-btn {
+      margin-top: 24px;
+      background: transparent;
+      border: 1px solid #ef4444;
+      color: #ef4444;
+      padding: 10px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
 
-        .btn-close-modal:hover {
-            color: var(--text-light);
-        }
+    /* Barra de navegación inferior */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 100;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    }
 
-        .modal-content h2 {
-            margin-bottom: 12px;
-            color: var(--text-light);
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
+    .nav-item {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 24px;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+    }
 
-        .modal-content p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 22px;
-            line-height: 1.4;
-        }
+    .nav-item.active {
+      color: var(--primary);
+      background: rgba(16, 185, 129, 0.12);
+    }
 
-        .form-input {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            background-color: var(--input-bg);
-            color: var(--text-light);
-            font-size: 0.95rem;
-            outline: none;
-        }
+    .nav-icon {
+      font-size: 1.4rem;
+    }
 
-        .btn-submit {
-            background: var(--electric-blue);
-            color: #0b1329;
-            border: none;
-            padding: 14px;
-            width: 100%;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .celebration-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(11, 19, 41, 0.9);
-            backdrop-filter: blur(8px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 3000;
-        }
-
-        .celebration-content {
-            background: var(--bg-card);
-            border: 1px solid var(--neon-yellow);
-            padding: 40px 30px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 450px;
-            text-align: center;
-            box-shadow: var(--box-shadow);
-        }
-
-        .animated-medal {
-            font-size: 5.5rem;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .confetti-piece {
-            position: absolute;
-            width: 8px;
-            height: 14px;
-            top: -20px;
-            animation: fallConfetti 3s linear infinite;
-        }
-
-        @keyframes fallConfetti {
-            0% { top: -20px; transform: rotate(0deg); }
-            100% { top: 100vh; transform: rotate(720deg); }
-        }
-    </style>
+    @media (max-width: 600px) {
+      .week-tabs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="modal-overlay" id="account-modal">
-        <div class="modal-content">
-            <button class="btn-close-modal" onclick="cerrarModalLogin()" title="Cerrar ventana">&times;</button>
-            <h2>Bienvenido a Vitalidad Activa</h2>
-            <p>Ingresa tus datos para registrar tu progreso en el programa de entrenamiento.</p>
-            <input type="text" id="username" class="form-input" placeholder="Nombre completo o usuario" required>
-            <input type="password" id="password" class="form-input" placeholder="Contraseña de acceso" required>
-            <button class="btn-submit" onclick="registrarUsuario()">Iniciar Sesión</button>
-        </div>
-    </div>
-
-    <div class="celebration-overlay" id="celebration-modal">
-        <div class="celebration-content">
-            <span class="animated-medal">🏆</span>
-            <h2 style="margin-bottom: 10px;">¡Felicitaciones!</h2>
-            <p id="celebration-msg" style="margin-bottom: 25px; color: var(--text-muted);">Has completado exitosamente las 12 sesiones del programa Vitalidad Activa.</p>
-            <button class="btn-submit" style="background: var(--neon-green); color: #ffffff;" onclick="cerrarCelebracion()">Ver Marcador de Logros</button>
-        </div>
-    </div>
-
-    <header>
+  <header>
+    <div class="brand">
+      <div class="brand-icon">VA</div>
+      <div>
         <h1>Vitalidad Activa</h1>
-        <p>Programa de Acondicionamiento Físico Dirigido</p>
-    </header>
+        <p>Programa Progresivo de 4 Semanas</p>
+      </div>
+    </div>
+    <button class="theme-btn" id="themeToggle" aria-label="Cambiar tema">
+      <span id="themeIcon">☀️</span> <span id="themeText">Modo Claro</span>
+    </button>
+  </header>
 
-    <div class="user-status-bar">
-        <span id="user-display">Usuario: Invitado</span>
-        <div class="controls-wrapper">
-            <select id="theme-selector" class="theme-select" onchange="cambiarTema(this.value)">
-                <option value="deportivo">Modo Oscuro</option>
-                <option value="minimalista">Modo Claro</option>
-            </select>
-            <button class="btn-switch-user" id="btn-logout" onclick="abrirModalLogin()">Iniciar Sesión</button>
+  <main class="container">
+    <div class="motivation-banner">
+      <span>💪</span>
+      <p id="motivationQuote">Cada movimiento suave suma salud y energía a tu día. ¡Avanza a tu propio ritmo!</p>
+    </div>
+
+    <!-- VISTA 1: RUTINAS -->
+    <section id="routinesView" class="view-section active">
+      <div class="week-tabs" id="weekTabs">
+        <button class="week-tab active" data-week="1">Semana 1<small>Adaptación</small></button>
+        <button class="week-tab" data-week="2">Semana 2<small>Coordinación</small></button>
+        <button class="week-tab" data-week="3">Semana 3<small>Intensidad</small></button>
+        <button class="week-tab" data-week="4">Semana 4<small>Consolidación</small></button>
+      </div>
+
+      <div class="sessions-grid" id="sessionsContainer"></div>
+    </section>
+
+    <!-- VISTA 2: PROGRESO Y MEDALLAS -->
+    <section id="progressView" class="view-section">
+      <div class="progress-card">
+        <div class="progress-header">
+          <h2>Tu Progreso Total</h2>
+          <strong id="progressPercent" style="font-size: 1.3rem; color: var(--primary);">0%</strong>
         </div>
-    </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+        <p id="progressCount" style="color: var(--text-muted); font-size: 0.95rem;">0 de 12 sesiones completadas</p>
+      </div>
 
-    <div class="motivation-box" id="motivation-box">
-        "La constancia y el movimiento diario son la clave de la salud integral."
-    </div>
+      <h2 style="margin-bottom: 16px;">Medallas Desbloqueables</h2>
+      <div class="badges-grid">
+        <div class="badge-item" id="badge-1">
+          <span class="badge-icon">🌱</span>
+          <h3>Primer Paso</h3>
+          <p>Completa tu primera sesión de entrenamiento.</p>
+        </div>
+        <div class="badge-item" id="badge-3">
+          <span class="badge-icon">🔥</span>
+          <h3>Gran Comienzo</h3>
+          <p>Completa las 3 sesiones de la Semana 1.</p>
+        </div>
+        <div class="badge-item" id="badge-6">
+          <span class="badge-icon">⚡</span>
+          <h3>Mitad del Camino</h3>
+          <p>Alcanza las 6 sesiones completadas.</p>
+        </div>
+        <div class="badge-item" id="badge-12">
+          <span class="badge-icon">🏆</span>
+          <h3>¡Campeón Total!</h3>
+          <p>Completa las 12 sesiones del programa.</p>
+        </div>
+      </div>
 
-    <div class="container">
-        <section id="sec-inicio" class="page-section active">
-            <div class="semana-selector-container">
-                <label for="semana-select">Fase del Programa:</label>
-                <select id="semana-select" class="semana-select" onchange="cambiarSemana(this.value)">
-                    <option value="1">Semana 1: Adaptación Fisiológica</option>
-                    <option value="2">Semana 2: Desarrollo y Coordinación</option>
-                    <option value="3">Semana 3: Intensidad Progresiva</option>
-                    <option value="4">Semana 4: Crecimiento y Consolidación</option>
-                </select>
+      <button class="reset-btn" id="resetProgressBtn">Reiniciar progreso</button>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-target="routinesView">
+      <span class="nav-icon">🏠</span>
+      <span>Rutinas</span>
+    </button>
+    <button class="nav-item" data-target="progressView">
+      <span class="nav-icon">📅</span>
+      <span>Mi Progreso</span>
+    </button>
+  </nav>
+
+  <script>
+    // BASE DE DATOS DE LAS 12 SESIONES CON LAS NUEVAS DURACIONES
+    // Reemplaza "TU_ID_VIDEO_X" con el código de 11 caracteres de cada video en YouTube
+    const sessionsData = [
+      // SEMANA 1 (5 min)
+      {
+        id: 1,
+        week: 1,
+        title: "Sesión 1: Movilidad articular",
+        duration: "5 min",
+        modality: "100% Sentado en silla",
+        youtubeId: "TU_ID_VIDEO_1",
+        description: "Movimientos suaves y controlados de cuello, hombros, muñecas y tobillos para activar las articulaciones sin impacto."
+      },
+      {
+        id: 2,
+        week: 1,
+        title: "Sesión 2: Equilibrio y postura",
+        duration: "5 min",
+        modality: "De pie con apoyo de silla",
+        youtubeId: "TU_ID_VIDEO_2",
+        description: "Ejercicios de estabilidad y control postural utilizando el respaldo de la silla como punto seguro de apoyo."
+      },
+      {
+        id: 3,
+        week: 1,
+        title: "Sesión 3: Estiramientos y respiración",
+        duration: "5 min",
+        modality: "100% Sentado en silla",
+        youtubeId: "TU_ID_VIDEO_3",
+        description: "Estiramientos guiados de cadena posterior combinados con respiración diafragmática lenta para reducir tensión."
+      },
+
+      // SEMANA 2 (5 min)
+      {
+        id: 4,
+        week: 2,
+        title: "Sesión 4: Fortalecimiento de piernas",
+        duration: "5 min",
+        modality: "Combinado con silla",
+        youtubeId: "TU_ID_VIDEO_4",
+        description: "Sentadillas asistidas frente a la silla y extensiones controladas de rodilla para ganar fuerza en el tren inferior."
+      },
+      {
+        id: 5,
+        week: 2,
+        title: "Sesión 5: Cardio ligero",
+        duration: "5 min",
+        modality: "De pie de bajo impacto",
+        youtubeId: "TU_ID_VIDEO_5",
+        description: "Marcha activa en el sitio y pasos laterales suaves sin saltos para estimular el sistema cardiovascular."
+      },
+      {
+        id: 6,
+        week: 2,
+        title: "Sesión 6: Movilidad de espalda",
+        duration: "5 min",
+        modality: "100% Sentado en silla",
+        youtubeId: "TU_ID_VIDEO_6",
+        description: "Aperturas de pecho, retracción escapular e inclinaciones laterales seguras para mejorar la salud espinal."
+      },
+
+      // SEMANA 3 (5 min)
+      {
+        id: 7,
+        week: 3,
+        title: "Sesión 7: Fortalecimiento de brazos",
+        duration: "5 min",
+        modality: "Sentado con botellas de agua",
+        youtubeId: "TU_ID_VIDEO_7",
+        description: "Press de hombros y curl de bíceps utilizando dos botellas pequeñas de agua como resistencia ligera."
+      },
+      {
+        id: 8,
+        week: 3,
+        title: "Sesión 8: Coordinación y agilidad",
+        duration: "5 min",
+        modality: "De pie de bajo impacto",
+        youtubeId: "TU_ID_VIDEO_8",
+        description: "Desplazamientos diagonales suaves y toques cruzados mano-rodilla para estimular la agilidad motora."
+      },
+      {
+        id: 9,
+        week: 3,
+        title: "Sesión 9: Movilidad de cadera",
+        duration: "5 min",
+        modality: "Apoyo en silla",
+        youtubeId: "TU_ID_VIDEO_9",
+        description: "Abducciones laterales controladas y rotación suave pélvica para liberar rigidez en la zona lumbar y cadera."
+      },
+
+      // SEMANA 4 (6 min)
+      {
+        id: 10,
+        week: 4,
+        title: "Sesión 10: Circuito de resistencia",
+        duration: "6 min",
+        modality: "Combinado continuo",
+        youtubeId: "TU_ID_VIDEO_10",
+        description: "Bloque dinámico que integra marcha activa, sentadillas en silla y elevaciones de brazos con descansos breves."
+      },
+      {
+        id: 11,
+        week: 4,
+        title: "Sesión 11: Entrenamiento funcional",
+        duration: "6 min",
+        modality: "Movimientos cotidianos",
+        youtubeId: "TU_ID_VIDEO_11",
+        description: "Patrones biomecánicos seguros que simulan agacharse, alcanzar objetos altos y mantener estabilidad diaria."
+      },
+      {
+        id: 12,
+        week: 4,
+        title: "Sesión 12: Rutina integral final",
+        duration: "6 min",
+        modality: "Sesión completa de cierre",
+        youtubeId: "TU_ID_VIDEO_12",
+        description: "Evaluación integral que combina movilidad articular, fuerza funcional ligera y vuelta a la calma."
+      }
+    ];
+
+    const quotes = [
+      "Cada movimiento suave suma salud y energía a tu día. ¡Avanza a tu propio ritmo!",
+      "La constancia vale más que la intensidad. ¡Hoy es un gran día para cuidarte!",
+      "Respira profundo, mantén tu espalda recta y disfruta cada repetición.",
+      "Pequeños hábitos diarios construyen una vitalidad duradera."
+    ];
+
+    let currentWeek = 1;
+    let completedSessions = JSON.parse(localStorage.getItem('vitalidad_completed')) || [];
+
+    const sessionsContainer = document.getElementById('sessionsContainer');
+    const weekTabs = document.querySelectorAll('.week-tab');
+    const navItems = document.querySelectorAll('.nav-item');
+    const views = document.querySelectorAll('.view-section');
+    const themeToggle = document.getElementById('themeToggle');
+
+    // Tema claro / oscuro
+    if (localStorage.getItem('vitalidad_theme') === 'light') {
+      document.body.classList.add('light-theme');
+      document.getElementById('themeIcon').textContent = '🌙';
+      document.getElementById('themeText').textContent = 'Modo Oscuro';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      localStorage.setItem('vitalidad_theme', isLight ? 'light' : 'dark');
+      document.getElementById('themeIcon').textContent = isLight ? '🌙' : '☀️';
+      document.getElementById('themeText').textContent = isLight ? 'Modo Oscuro' : 'Modo Claro';
+    });
+
+    // Renderizar sesiones de la semana seleccionada
+    function renderSessions(week) {
+      sessionsContainer.innerHTML = '';
+      const filtered = sessionsData.filter(s => s.week === week);
+
+      filtered.forEach(session => {
+        const isCompleted = completedSessions.includes(session.id);
+        const card = document.createElement('article');
+        card.className = `session-card ${isCompleted ? 'completed' : ''}`;
+
+        card.innerHTML = `
+          <div class="session-header">
+            <div>
+              <span class="session-badge">⏱️ ${session.duration} • ${session.modality}</span>
+              <h3 class="session-title">${session.title}</h3>
             </div>
+          </div>
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/${session.youtubeId}" 
+              title="${session.title}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="session-body">
+            <p class="session-desc">${session.description}</p>
+            <button class="complete-btn" onclick="toggleSession(${session.id})">
+              ${isCompleted ? '✅ Sesión Completada' : '⭕ Marcar como Completado'}
+            </button>
+          </div>
+        `;
+        sessionsContainer.appendChild(card);
+      });
+    }
 
-            <!-- SEMANA 1 -->
-            <div id="block-semana-1" class="semana-block active">
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">8 Minutos</span>
-                        <span>[ SESIÓN 01 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 1: Movilidad Articular Completa</h3>
-                        <p>Secuencia guiada para activar articulaciones y preparar la musculatura de forma segura.</p>
-                        <button class="btn-complete" onclick="toggleSesion(1)" id="btn-s1">Marcar como Completado</button>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">10 Minutos</span>
-                        <span>[ SESIÓN 02 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 2: Equilibrio, Estabilidad y Postura</h3>
-                        <p>Fortalecimiento de la zona central para prevenir caídas y aumentar la estabilidad diaria.</p>
-                        <button class="btn-complete" onclick="toggleSesion(2)" id="btn-s2">Marcar como Completado</button>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">9 Minutos</span>
-                        <span>[ SESIÓN 03 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 3: Estiramiento Guiado y Respiración</h3>
-                        <p>Trabajo de flexibilidad articular e integración respiratoria para el cierre de la primera fase.</p>
-                        <button class="btn-complete" onclick="toggleSesion(3)" id="btn-s3">Marcar como Completado</button>
-                    </div>
-                </div>
-            </div>
+    // Marcar o desmarcar sesión
+    window.toggleSession = function(id) {
+      if (completedSessions.includes(id)) {
+        completedSessions = completedSessions.filter(item => item !== id);
+      } else {
+        completedSessions.push(id);
+      }
+      localStorage.setItem('vitalidad_completed', JSON.stringify(completedSessions));
+      renderSessions(currentWeek);
+      updateProgressUI();
+    };
 
-            <!-- SEMANA 2 -->
-            <div id="block-semana-2" class="semana-block">
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1434596955112-0f6643de2723?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">12 Minutos</span>
-                        <span>[ SESIÓN 04 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 4: Fortalecimiento de Extremidades Inferiores</h3>
-                        <p>Ejercicios adaptados de fuerza muscular apoyándose en una silla estable para ganar autonomía.</p>
-                        <button class="btn-complete" onclick="toggleSesion(4)" id="btn-s4">Marcar como Completado</button>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">15 Minutos</span>
-                        <span>[ SESIÓN 05 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 5: Acondicionamiento Cardiovascular Ligero</h3>
-                        <p>Marcha activa continua para estimular la capacidad pulmonar y la circulación sanguínea.</p>
-                        <button class="btn-complete" onclick="toggleSesion(5)" id="btn-s5">Marcar como Completado</button>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1594737625751-a580757e232b?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">14 Minutos</span>
-                        <span>[ SESIÓN 06 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 6: Salud Espinal y Corrección Postural</h3>
-                        <p>Rutina orientada a liberar molestias en la zona lumbar y mejorar la alineación de la columna.</p>
-                        <button class="btn-complete" onclick="toggleSesion(6)" id="btn-s6">Marcar como Completado</button>
-                    </div>
-                </div>
-            </div>
+    // Actualizar barra de progreso y medallas
+    function updateProgressUI() {
+      const total = sessionsData.length;
+      const count = completedSessions.length;
+      const percent = Math.round((count / total) * 100);
 
-            <!-- SEMANA 3 -->
-            <div id="block-semana-3" class="semana-block">
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">18 Minutos</span>
-                        <span>[ SESIÓN 07 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 7: Tonificación de Extremidades Superiores</h3>
-                        <p>Ejercicios con cargas ligeras adaptadas para tonificar los músculos de brazos y espalda.</p>
-                        <button class="btn-complete" onclick="toggleSesion(7)" id="btn-s7">Marcar como Completado</button>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">20 Minutos</span>
-                        <span>[ SESIÓN 08 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 8: Coordinación y Agilidad Motora</h3>
-                        <p>Secuencias ritmadas para estimular la conexión neuromuscular y la agilidad de movimiento.</p>
-                        <button class="btn-complete" onclick="toggleSesion(8)" id="btn-s8">Marcar como Completado</button>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">22 Minutos</span>
-                        <span>[ SESIÓN 09 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 9: Movilidad Pélvica y Articulación de Cadera</h3>
-                        <p>Trabajo enfocado en soltar la rigidez articular para facilitar la movilidad diaria.</p>
-                        <button class="btn-complete" onclick="toggleSesion(9)" id="btn-s9">Marcar como Completado</button>
-                    </div>
-                </div>
-            </div>
+      document.getElementById('progressPercent').textContent = `${percent}%`;
+      document.getElementById('progressBarFill').style.width = `${percent}%`;
+      document.getElementById('progressCount').textContent = `${count} de ${total} sesiones completadas`;
 
-            <!-- SEMANA 4 -->
-            <div id="block-semana-4" class="semana-block">
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1447452001602-7090c7ab2db3?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">28 Minutos</span>
-                        <span>[ SESIÓN 10 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 10: Circuito de Resistencia General</h3>
-                        <p>Bloques continuos que combinan trabajo muscular liviano y capacidad aeróbica.</p>
-                        <button class="btn-complete" onclick="toggleSesion(10)" id="btn-s10">Marcar como Completado</button>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">30 Minutos</span>
-                        <span>[ SESIÓN 11 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 11: Entrenamiento Funcional Integrado</h3>
-                        <p>Ejercicios multiarticulares diseñados para facilitar actividades de la vida cotidiana.</p>
-                        <button class="btn-complete" onclick="toggleSesion(11)" id="btn-s11">Marcar como Completado</button>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">32 Minutos</span>
-                        <span>[ SESIÓN 12 ]</span>
-                    </div>
-                    <div class="video-info">
-                        <h3>Sesión 12: Rutina Integral y Evaluación de Cierre</h3>
-                        <p>Sesión completa de consolidación para evaluar el progreso físico y celebrar los logros del programa.</p>
-                        <button class="btn-complete" onclick="toggleSesion(12)" id="btn-s12">Marcar como Completado</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+      document.getElementById('badge-1').classList.toggle('unlocked', count >= 1);
+      document.getElementById('badge-3').classList.toggle('unlocked', count >= 3);
+      document.getElementById('badge-6').classList.toggle('unlocked', count >= 6);
+      document.getElementById('badge-12').classList.toggle('unlocked', count >= 12);
+    }
 
-        <!-- SECCIÓN 2: PROGRESO -->
-        <section id="sec-progreso" class="page-section">
-            <div class="progress-header">
-                <h2>Panel de Progreso</h2>
-                <p style="font-size: 1.1rem; margin-top: 12px; color: var(--text-muted);">
-                    Sesiones completadas: <span id="contador-progreso" style="color: var(--electric-blue); font-weight: 800; font-size: 1.8rem;">0</span> / 12
-                </p>
-                <div class="progress-bar-container">
-                    <div id="bar-fill" class="progress-bar-fill"></div>
-                </div>
-            </div>
+    // Cambio de pestañas de semana
+    weekTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        weekTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentWeek = parseInt(tab.dataset.week);
+        renderSessions(currentWeek);
+      });
+    });
 
-            <h3 style="color: var(--text-light); margin: 25px 0 15px 5px; font-size: 1.1rem; font-weight: 700;">Reconocimientos e Hitos</h3>
-            
-            <div class="medals-grid">
-                <div class="medal-item" id="medal-1">
-                    <span class="medal-icon">🏁</span>
-                    <strong>Inicio del Reto</strong>
-                </div>
-                <div class="medal-item" id="medal-2">
-                    <span class="medal-icon">⚡</span>
-                    <strong>Constancia</strong>
-                </div>
-                <div class="medal-item" id="medal-3">
-                    <span class="medal-icon">🔋</span>
-                    <strong>Etapa Media</strong>
-                </div>
-                <div class="medal-item" id="medal-4">
-                    <span class="medal-icon">🏆</span>
-                    <strong>Programa Completado</strong>
-                </div>
-            </div>
-        </section>
-    </div>
+    // Cambio de vista inferior
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navItems.forEach(n => n.classList.remove('active'));
+        item.classList.add('active');
+        const target = item.dataset.target;
+        views.forEach(v => v.classList.toggle('active', v.id === target));
+      });
+    });
 
-    <nav class="nav-bottom">
-        <button class="nav-item active" onclick="cambiarSeccion('sec-inicio', this)">
-            <span class="nav-item-icon">📋</span>
-            Rutinas
-        </button>
-        <button class="nav-item" onclick="cambiarSeccion('sec-progreso', this)">
-            <span class="nav-item-icon">📊</span>
-            Progreso
-        </button>
-    </nav>
+    // Reiniciar progreso
+    document.getElementById('resetProgressBtn').addEventListener('click', () => {
+      if (confirm('¿Seguro que deseas reiniciar todo tu progreso?')) {
+        completedSessions = [];
+        localStorage.removeItem('vitalidad_completed');
+        renderSessions(currentWeek);
+        updateProgressUI();
+      }
+    });
 
-    <script>
-        let currentUser = "";
-        let progreso = {
-            totalCompletadas: 0,
-            completadosArray: new Array(13).fill(false)
-        };
+    // Frase motivacional aleatoria
+    document.getElementById('motivationQuote').textContent = quotes[Math.floor(Math.random() * quotes.length)];
 
-        const frases = [
-            "La constancia y el movimiento diario son la clave de la salud integral.",
-            "El ejercicio adaptado fortalece el cuerpo y optimiza la calidad de vida.",
-            "Cada sesión completada es un paso firme hacia el bienestar físico."
-        ];
-
-        window.onload = function() {
-            const temaGuardado = localStorage.getItem('active_theme') || 'deportivo';
-            cambiarTema(temaGuardado);
-            document.getElementById('theme-selector').value = temaGuardado;
-
-            const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
-            document.getElementById('motivation-box').innerText = `"${fraseAleatoria}"`;
-            
-            const savedUser = localStorage.getItem('active_user_name');
-            if (savedUser) {
-                currentUser = savedUser;
-                document.getElementById('account-modal').style.display = 'none'; 
-                document.getElementById('user-display').innerText = `Usuario: ${currentUser}`;
-                document.getElementById('btn-logout').innerText = "Cambiar Usuario";
-                
-                const savedData = localStorage.getItem(`progreso_${currentUser}`);
-                if (savedData) {
-                    progreso = JSON.parse(savedData);
-                }
-                actualizarInterfaz();
-            } else {
-                document.getElementById('account-modal').style.display = 'flex';
-                document.getElementById('btn-logout').innerText = "Iniciar Sesión";
-            }
-        };
-
-        function cambiarTema(nombreTema) {
-            document.documentElement.setAttribute('data-theme', nombreTema);
-            localStorage.setItem('active_theme', nombreTema);
-        }
-
-        function abrirModalLogin() {
-            document.getElementById('account-modal').style.display = 'flex';
-        }
-
-        function cerrarModalLogin() {
-            document.getElementById('account-modal').style.display = 'none';
-        }
-
-        function registrarUsuario() {
-            const nameInput = document.getElementById('username').value.trim();
-            const passInput = document.getElementById('password').value.trim();
-
-            if (nameInput === "" || passInput === "") {
-                alert("Por favor, ingresa tu usuario y contraseña.");
-                return;
-            }
-
-            currentUser = nameInput;
-            localStorage.setItem('active_user_name', currentUser);
-            
-            const existingData = localStorage.getItem(`progreso_${currentUser}`);
-            if (existingData) {
-                progreso = JSON.parse(existingData);
-            } else {
-                progreso = {
-                    totalCompletadas: 0,
-                    completadosArray: new Array(13).fill(false)
-                };
-                localStorage.setItem(`progreso_${currentUser}`, JSON.stringify(progreso));
-            }
-
-            document.getElementById('account-modal').style.display = 'none';
-            document.getElementById('user-display').innerText = `Usuario: ${currentUser}`;
-            document.getElementById('btn-logout').innerText = "Cambiar Usuario";
-            
-            document.getElementById('username').value = "";
-            document.getElementById('password').value = "";
-            
-            actualizarInterfaz();
-        }
-
-        function cerrarSesion() {
-            localStorage.removeItem('active_user_name');
-            currentUser = "";
-            progreso = {
-                totalCompletadas: 0,
-                completadosArray: new Array(13).fill(false)
-            };
-            
-            document.getElementById('user-display').innerText = "Usuario: Invitado";
-            document.getElementById('btn-logout').innerText = "Iniciar Sesión";
-            abrirModalLogin();
-            
-            actualizarInterfaz();
-        }
-
-        function cambiarSeccion(sectionId, boton) {
-            document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-            boton.classList.add('active');
-        }
-
-        function cambiarSemana(numSemana) {
-            document.querySelectorAll('.semana-block').forEach(block => block.classList.remove('active'));
-            document.getElementById(`block-semana-${numSemana}`).classList.add('active');
-        }
-
-        function lanzarConfeti() {
-            const overlay = document.getElementById('celebration-modal');
-            const colores = ['#38bdf8', '#10b981', '#facc15', '#f97316'];
-            for (let i = 0; i < 30; i++) {
-                const confeti = document.createElement('div');
-                confeti.className = 'confetti-piece';
-                confeti.style.left = Math.random() * 100 + 'vw';
-                confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
-                confeti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                overlay.appendChild(confeti);
-            }
-        }
-
-        function toggleSesion(idSesion) {
-            if (!currentUser) {
-                alert("Por favor, inicia sesión para registrar tu progreso.");
-                abrirModalLogin();
-                return;
-            }
-
-            if (!progreso.completadosArray[idSesion]) {
-                progreso.completadosArray[idSesion] = true;
-                progreso.totalCompletadas++;
-                
-                localStorage.setItem(`progreso_${currentUser}`, JSON.stringify(progreso));
-                actualizarInterfaz();
-
-                if (progreso.totalCompletadas === 12) {
-                    document.getElementById('celebration-modal').style.display = 'flex';
-                    lanzarConfeti();
-                }
-            } else {
-                progreso.completadosArray[idSesion] = false;
-                progreso.totalCompletadas = Math.max(0, progreso.totalCompletadas - 1);
-                
-                localStorage.setItem(`progreso_${currentUser}`, JSON.stringify(progreso));
-                actualizarInterfaz();
-            }
-        }
-
-        function cerrarCelebracion() {
-            document.getElementById('celebration-modal').style.display = 'none';
-            const btnProgreso = document.querySelectorAll('.nav-item')[1];
-            cambiarSeccion('sec-progreso', btnProgreso);
-        }
-
-        function actualizarInterfaz() {
-            for (let i = 1; i <= 12; i++) {
-                const boton = document.getElementById(`btn-s${i}`);
-                if (boton) {
-                    if (progreso.completadosArray[i]) {
-                        boton.innerText = "✓ Sesión Completada (Hacer clic para desmarcar)";
-                        boton.classList.add('completed');
-                    } else {
-                        boton.innerText = "Marcar como Completado";
-                        boton.classList.remove('completed');
-                    }
-                }
-            }
-
-            document.getElementById('contador-progreso').innerText = progreso.totalCompletadas;
-            let porcentaje = (progreso.totalCompletadas / 12) * 100;
-            document.getElementById('bar-fill').style.width = porcentaje + "%";
-
-            document.getElementById('medal-1').classList.remove('unlocked');
-            document.getElementById('medal-2').classList.remove('unlocked');
-            document.getElementById('medal-3').classList.remove('unlocked');
-            document.getElementById('medal-4').classList.remove('unlocked');
-
-            if (progreso.totalCompletadas >= 1) document.getElementById('medal-1').classList.add('unlocked');
-            if (progreso.totalCompletadas >= 3) document.getElementById('medal-2').classList.add('unlocked');
-            if (progreso.totalCompletadas >= 6) document.getElementById('medal-3').classList.add('unlocked');
-            if (progreso.totalCompletadas >= 12) document.getElementById('medal-4').classList.add('unlocked');
-        }
-    </script>
+    // Inicializar
+    renderSessions(currentWeek);
+    updateProgressUI();
+  </script>
 </body>
 </html>
