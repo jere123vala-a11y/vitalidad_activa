@@ -202,25 +202,6 @@
             border: 1px solid var(--border-color);
         }
 
-        .video-placeholder {
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            aspect-ratio: 16/9;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-            position: relative;
-            padding: 18px;
-        }
-
-        .video-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to top, rgba(11, 19, 41, 0.85), rgba(11, 19, 41, 0.1));
-        }
-
         .video-wrapper {
             position: relative;
             width: 100%;
@@ -250,14 +231,6 @@
             padding: 6px 14px;
             border-radius: 20px;
             z-index: 2;
-        }
-
-        .video-placeholder span {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 1rem;
-            z-index: 1;
-            letter-spacing: 0.5px;
         }
 
         .video-info {
@@ -666,72 +639,102 @@
             <!-- SEMANA 3 (5 Minutos) -->
             <div id="block-semana-3" class="semana-block">
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop');">
+                    <div class="video-wrapper">
                         <span class="badge-intensity">5 Minutos</span>
-                        <span>[ SESIÓN 07 ]</span>
+                        <iframe
+                            src="https://www.youtube.com/embed/ojVy_ZGDbB8"
+                            title="Sesión 7: Fortalecimiento de Brazos"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 7: Fortalecimiento de Brazos</h3>
-                        <p>Ejercicios con cargas ligeras adaptadas para tonificar los músculos de brazos y espalda.</p>
+                        <p>Rutina con mancuernas ligeras o sin peso desde una silla firme para trabajar fuerza funcional en brazos y hombros con control.</p>
                         <button class="btn-complete" onclick="toggleSesion(7)" id="btn-s7">Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=600&auto=format&fit=crop');">
+                    <div class="video-wrapper">
                         <span class="badge-intensity">5 Minutos</span>
-                        <span>[ SESIÓN 08 ]</span>
+                        <iframe
+                            src="https://www.youtube.com/embed/xNt3VDhaWZ0"
+                            title="Sesión 8: Coordinación y Agilidad"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 8: Coordinación y Agilidad</h3>
-                        <p>Secuencias ritmadas para estimular la conexión neuromuscular y la agilidad de movimiento.</p>
+                        <p>Marcha suave en el sitio, desplazamientos laterales y coordinación de brazos y piernas a un ritmo cómodo y seguro.</p>
                         <button class="btn-complete" onclick="toggleSesion(8)" id="btn-s8">Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop');">
+                    <div class="video-wrapper">
                         <span class="badge-intensity">5 Minutos</span>
-                        <span>[ SESIÓN 09 ]</span>
+                        <iframe
+                            src="https://www.youtube.com/embed/Ppja8pAl7uo"
+                            title="Sesión 9: Movilidad de Cadera"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 9: Movilidad de Cadera</h3>
-                        <p>Trabajo enfocado en soltar la rigidez articular para facilitar la movilidad diaria.</p>
+                        <p>Elevación de rodillas, apertura controlada de caderas, inclinación suave del tronco y estiramiento sentado en silla firme.</p>
                         <button class="btn-complete" onclick="toggleSesion(9)" id="btn-s9">Marcar como Completado</button>
                     </div>
                 </div>
             </div>
 
-            <!-- SEMANA 4 (6 Minutos) -->
+            <!-- SEMANA 4 (6-7 Minutos) -->
             <div id="block-semana-4" class="semana-block">
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1447452001602-7090c7ab2db3?q=80&w=600&auto=format&fit=crop');">
+                    <div class="video-wrapper">
                         <span class="badge-intensity">6 Minutos</span>
-                        <span>[ SESIÓN 10 ]</span>
+                        <iframe
+                            src="https://www.youtube.com/embed/QtXZtsatCHI"
+                            title="Sesión 10: Circuito de Resistencia"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 10: Circuito de Resistencia</h3>
-                        <p>Bloques continuos que combinan trabajo muscular liviano y capacidad aeróbica.</p>
+                        <p>Circuito adaptado desde una silla firme con movimientos alternos de piernas, extensión de rodillas, brazos y giros suaves del tronco.</p>
                         <button class="btn-complete" onclick="toggleSesion(10)" id="btn-s10">Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=600&auto=format&fit=crop');">
+                    <div class="video-wrapper">
                         <span class="badge-intensity">6 Minutos</span>
-                        <span>[ SESIÓN 11 ]</span>
+                        <iframe
+                            src="https://www.youtube.com/embed/5vR3eXtqQcA"
+                            title="Sesión 11: Entrenamiento Funcional"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 11: Entrenamiento Funcional</h3>
-                        <p>Ejercicios multiarticulares diseñados para facilitar actividades de la vida cotidiana.</p>
+                        <p>Movimientos cotidianos con apoyo de una silla firme: sentarse y levantarse, alcance funcional, pasos laterales y semiflexiones de rodilla.</p>
                         <button class="btn-complete" onclick="toggleSesion(11)" id="btn-s11">Marcar como Completado</button>
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-placeholder" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop');">
-                        <span class="badge-intensity">6 Minutos</span>
-                        <span>[ SESIÓN 12 ]</span>
+                    <div class="video-wrapper">
+                        <span class="badge-intensity">7 Minutos</span>
+                        <iframe
+                            src="https://www.youtube.com/embed/-MV31FsQbOg"
+                            title="Sesión 12: Rutina Integral Final"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div class="video-info">
                         <h3>Sesión 12: Rutina Integral Final</h3>
-                        <p>Sesión completa de consolidación para evaluar el progreso físico y celebrar los logros del programa.</p>
+                        <p>Repaso completo de movilidad de cuello, hombros, brazos, tronco, piernas y incorporación desde la silla para cerrar el programa.</p>
                         <button class="btn-complete" onclick="toggleSesion(12)" id="btn-s12">Marcar como Completado</button>
                     </div>
                 </div>
